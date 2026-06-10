@@ -1,4 +1,5 @@
 import 'package:fitted/core/theme/app_colors.dart';
+import 'package:fitted/features/auth/signup/view/signup_tab_screen.dart';
 import 'package:fitted/features/subscription/view/subscription_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitted/core/utils/image_path.dart';
@@ -53,7 +54,7 @@ CustomButtonWidget(
   onTap: () {
     Navigator.pushReplacementNamed(
       context,
-      SubscriptionView.subscriptionView,
+      SignUpTabScreen.signUpTabScreen,
     );
   },
 ),

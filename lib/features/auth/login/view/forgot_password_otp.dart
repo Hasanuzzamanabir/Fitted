@@ -15,12 +15,11 @@ class ForgotPasswordOtp extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.bgSecondary, // আপনার ক্রিম ব্যাকগ্রাউন্ড কালার
+      backgroundColor: AppColors.bgSecondary, 
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// ১. ডার্ক হেডার এরিয়া (ইমেজ ব্যাকগ্রাউন্ড এবং টাইটেল)
             Container(
               width: double.infinity,
               height: size.height * 0.28,
@@ -86,7 +85,6 @@ class ForgotPasswordOtp extends StatelessWidget {
               ),
             ),
 
-            /// ২. মূল কন্টেন্ট এরিয়া (ব্যাক বাটন, ওটিপি ফিল্ড এবং ভেরিফাই বাটন)
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
@@ -94,7 +92,6 @@ class ForgotPasswordOtp extends StatelessWidget {
                 children: [
                   SizedBox(height: 20.h),
 
-                  /// কাস্টম ব্যাক বাটন
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
@@ -141,7 +138,6 @@ class ForgotPasswordOtp extends StatelessWidget {
                   ),
                   SizedBox(height: 12.h),
 
-                  /// ৪টি ওটিপি বক্সের জন্য রো (Row)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -154,7 +150,6 @@ class ForgotPasswordOtp extends StatelessWidget {
 
                   SizedBox(height: 16.h),
 
-                  /// ওটিপি রিকোয়েস্ট মেসেজ / টাইমার
                   Center(
                     child: RichText(
                       text: TextSpan(
@@ -176,7 +171,6 @@ class ForgotPasswordOtp extends StatelessWidget {
 
                   SizedBox(height: 35.h),
 
-                  /// আপনার নিজস্ব CustomButtonWidget ব্যবহার করা হয়েছে
                   CustomButtonWidget(
                     title: "Verify OTP",
                     onTap: () {
@@ -192,7 +186,6 @@ class ForgotPasswordOtp extends StatelessWidget {
     );
   }
 
-  /// এক্সট্রা কাস্টম রিইউজেবল ওটিপি ইনপুট বক্স মেথড (অটো-ফোকাস ফিচারসহ)
   Widget _buildOtpBox(BuildContext context, {required bool first, required bool last}) {
     return SizedBox(
       width: 65.w,
@@ -201,10 +194,10 @@ class ForgotPasswordOtp extends StatelessWidget {
         autofocus: true,
         onChanged: (value) {
           if (value.length == 1 && last == false) {
-            FocusScope.of(context).nextFocus(); // ১টি সংখ্যা লিখলে পরের বক্সে যাবে
+            FocusScope.of(context).nextFocus(); 
           }
           if (value.isEmpty && first == false) {
-            FocusScope.of(context).previousFocus(); // ডিলিট করলে আগের বক্সে ফিরবে
+            FocusScope.of(context).previousFocus(); 
           }
         },
         showCursor: false,
@@ -213,8 +206,8 @@ class ForgotPasswordOtp extends StatelessWidget {
         keyboardType: TextInputType.number,
         style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
         inputFormatters: [
-          LengthLimitingTextInputFormatter(1), // ১ অক্ষরের বেশি লেখা যাবে না
-          FilteringTextInputFormatter.digitsOnly, // শুধু নাম্বার সাপোর্ট করবে
+          LengthLimitingTextInputFormatter(1),
+          FilteringTextInputFormatter.digitsOnly, 
         ],
         decoration: InputDecoration(
           filled: true,

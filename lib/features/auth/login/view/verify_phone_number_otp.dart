@@ -14,12 +14,11 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.bgSecondary, // আপনার ক্রিম ব্যাকগ্রাউন্ড কালার
+      backgroundColor: AppColors.bgSecondary,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// ১. ডার্ক হেডার এরিয়া (ইমেজ ব্যাকগ্রাউন্ড এবং টাইটেল)
             Container(
               width: double.infinity,
               height: size.height * 0.28,
@@ -85,7 +84,6 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
               ),
             ),
 
-            /// ২. মূল কন্টেন্ট এরিয়া (ব্যাক বাটন, ওটিপি ফিল্ড এবং ভেরিফাই বাটন)
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
@@ -93,7 +91,6 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
                 children: [
                   SizedBox(height: 20.h),
 
-                  /// কাস্টম ব্যাক বাটন
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
@@ -129,7 +126,7 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
 
                   SizedBox(height: 35.h),
 
-                  /// ইনপুট লেবেল
+          
                   Text(
                     "Verify", 
                     style: TextStyle(
@@ -140,7 +137,6 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
                   ),
                   SizedBox(height: 12.h),
 
-                  /// ৪টি ওটিপি বক্সের জন্য রো (Row)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -153,7 +149,6 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
 
                   SizedBox(height: 16.h),
 
-                  /// ওটিপি রিকোয়েস্ট মেসেজ / টাইমার
                   Center(
                     child: RichText(
                       text: TextSpan(
@@ -175,11 +170,9 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
 
                   SizedBox(height: 35.h),
 
-                  /// আপনার নিজস্ব CustomButtonWidget ব্যবহার করা হয়েছে
                   CustomButtonWidget(
                     title: "Verify OTP",
                     onTap: () {
-                      // ওটিপি ভেরিফিকেশন সফল হলে পাসওয়ার্ড রিসেট স্ক্রিনে যাওয়ার লজিক
                     },
                   ),
                 ],

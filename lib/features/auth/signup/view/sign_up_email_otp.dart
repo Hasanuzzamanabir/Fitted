@@ -1,21 +1,20 @@
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
-import 'package:fitted/core/widgets/custom_text_field.dart'; 
-import 'package:fitted/features/auth/login/view/forgot_password_otp.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ForgotPasswordView extends StatelessWidget {
-  const ForgotPasswordView({super.key});
-  static const String forgotPasswordView = '/forgotPasswordView';
+class SignUpEmailOtp extends StatelessWidget {
+  const SignUpEmailOtp({super.key});
+  static const String signUpEmailOtp = '/signUpEmailOtp';
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.bgSecondary, 
+      backgroundColor: AppColors.bgSecondary,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +63,7 @@ class ForgotPasswordView extends StatelessWidget {
                     ),
                     SizedBox(height: 12.h),
                     Text(
-                      "Forgot Password?", 
+                      "Verify Email Address", 
                       style: TextStyle(
                         color: Colors.white, 
                         fontSize: 22.sp, 
@@ -73,7 +72,7 @@ class ForgotPasswordView extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     Text(
-                      "Use the same mail that you used to create the account", 
+                      "Enter the 4-digit code that you receive in your account", 
                       style: TextStyle(
                         color: Colors.white70, 
                         fontSize: 13.sp,
@@ -127,34 +126,95 @@ class ForgotPasswordView extends StatelessWidget {
 
                   SizedBox(height: 35.h),
 
+          
                   Text(
-                    "Email", 
+                    "Verify Email Address", 
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.black87,
                     ),
                   ),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 12.h),
 
-                  const CustomTextField(
-                    hint: "Enter email", 
-                    prefixIcon: Icons.email_outlined,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildOtpBox(context, first: true, last: false),
+                      _buildOtpBox(context, first: false, last: false),
+                      _buildOtpBox(context, first: false, last: false),
+                      _buildOtpBox(context, first: false, last: true),
+                    ],
                   ),
 
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 16.h),
 
-                  
-CustomButtonWidget(
-  title: "Request OTP",
-  onTap: () {
-    Navigator.pushNamed(context, ForgotPasswordOtp.forgotPasswordOtp);
-  },
-),
+                  Center(
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Didn't receive code? ",
+                        style: TextStyle(color: Colors.grey, fontSize: 13.sp),
+                        children: [
+                          TextSpan(
+                            text: "Resend",
+                            style: TextStyle(
+                              color: AppColors.primecolor, 
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 35.h),
+
+                  CustomButtonWidget(
+                    title: "Verify OTP",
+                    onTap: () {
+                    },
+                  ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOtpBox(BuildContext context, {required bool first, required bool last}) {
+    return SizedBox(
+      width: 65.w,
+      height: 56.h,
+      child: TextField(
+        autofocus: true,
+        onChanged: (value) {
+          if (value.length == 1 && last == false) {
+            FocusScope.of(context).nextFocus(); 
+          }
+          if (value.isEmpty && first == false) {
+            FocusScope.of(context).previousFocus(); 
+          }
+        },
+        showCursor: false,
+        readOnly: false,
+        textAlign: TextAlign.center,
+        keyboardType: TextInputType.number,
+        style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(1), 
+          FilteringTextInputFormatter.digitsOnly,
+        ],
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: EdgeInsets.symmetric(vertical: 12.h),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.r),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );

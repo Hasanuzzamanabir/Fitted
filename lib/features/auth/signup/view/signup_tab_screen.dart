@@ -1,21 +1,21 @@
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/utils/image_path.dart';
-import 'package:fitted/features/auth/login/provider/login_tab_provider.dart';
-import 'package:fitted/features/auth/login/widget/login_form.dart';
-import 'package:fitted/features/auth/login/widget/phone_form.dart';
+import 'package:fitted/features/auth/signup/provider/sign_up_tab_provider.dart';
+import 'package:fitted/features/auth/signup/widgets/sign_up_email_form.dart';
+import 'package:fitted/features/auth/signup/widgets/sign_up_phone_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class CustomLoginTabScreen extends StatelessWidget {
-  const CustomLoginTabScreen({super.key});
-  static const String loginTabScreen = "/logintabscreen";
+class SignUpTabScreen extends StatelessWidget {
+  const SignUpTabScreen({super.key});
+  static const String signUpTabScreen = "/signuptabscreen";
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = context.watch<LoginTabProvider>();
+     final authProvider = context.watch<SignUpTabProvider>();
     final size = MediaQuery.of(context).size;
-
+  
     return Scaffold(
       backgroundColor: AppColors.bgSecondary,
       body: SingleChildScrollView(
@@ -53,9 +53,9 @@ class CustomLoginTabScreen extends StatelessWidget {
                   children: [
                     Text("Fitted.", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Serif')),
                     SizedBox(height: 5),
-                    Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
+                    Text("Welcome", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
                     SizedBox(height: 4),
-                    Text("Login to continue your journey", style: TextStyle(color: Colors.white70, fontSize: 13)),
+                    Text("Create account to continue your journey", style: TextStyle(color: Colors.white70, fontSize: 13)),
                     SizedBox(height: 20),
                   ],
                 ),
@@ -80,7 +80,7 @@ class CustomLoginTabScreen extends StatelessWidget {
                           authProvider.tabs.length,
                           (index) => Expanded(
                             child: GestureDetector(
-                              onTap: () => context.read<LoginTabProvider>().updateIndex(index),
+                              onTap: () => context.read<SignUpTabProvider>().updateIndex(index),
                               child: AnimatedContainer(
                                 duration: const Duration(milliseconds: 250),
                                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -119,8 +119,8 @@ class CustomLoginTabScreen extends StatelessWidget {
                     IndexedStack(
                       index: authProvider.selectedIndex,
                       children: const [
-                        EmailForm(),
-                        PhoneForm(),
+                        SignUpEmailForm(),
+                        SignUpPhoneForm(),
                       ],
                     ),
                     
@@ -140,11 +140,11 @@ class CustomLoginTabScreen extends StatelessWidget {
     return Center(
       child: RichText(
         text: const TextSpan(
-          text: "Don't have account? ",
+          text: "Already have an account?",
           style: TextStyle(color: AppColors.subtext, fontSize: 14),
           children: [
             TextSpan(
-              text: "Create Account",
+              text: "Log In",
               style: TextStyle(color: AppColors.subtext, fontWeight: FontWeight.bold),
             ),
           ],

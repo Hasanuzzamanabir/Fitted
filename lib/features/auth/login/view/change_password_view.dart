@@ -1,7 +1,7 @@
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
-import 'package:fitted/core/widgets/custom_text_field.dart';   // আপনার কাস্টম টেক্সট ফিল্ড পাথ
+import 'package:fitted/core/widgets/custom_text_field.dart';   
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,12 +14,11 @@ class ChangePasswordView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.bgSecondary, // আপনার ক্রিম ব্যাকগ্রাউন্ড কালার
+      backgroundColor: AppColors.bgSecondary, 
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// ১. ডার্ক হেডার এরিয়া (ইমেজ ব্যাকগ্রাউন্ড এবং টাইটেল)
             Container(
               width: double.infinity,
               height: size.height * 0.28,
@@ -85,7 +84,6 @@ class ChangePasswordView extends StatelessWidget {
               ),
             ),
 
-            /// ২. মূল কন্টেন্ট এরিয়া
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
@@ -93,7 +91,6 @@ class ChangePasswordView extends StatelessWidget {
                 children: [
                   SizedBox(height: 20.h),
 
-                  /// কাস্টম ব্যাক বাটন
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
@@ -157,14 +154,13 @@ class ChangePasswordView extends StatelessWidget {
 
                   SizedBox(height: 20.h),
 
-                  /// ৩. পাসওয়ার্ড রুলস বক্স (ইমেজের মতো বর্ডার এবং গ্রিন টিক মার্কসহ)
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(16.w),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15.r),
-                      border: Border.all(color: const Color(0xFFFFD4D9)), // হালকা পিঙ্ক বর্ডার
+                      border: Border.all(color: const Color(0xFFFFD4D9)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,21 +180,17 @@ class ChangePasswordView extends StatelessWidget {
 
                   SizedBox(height: 30.h),
 
-                  /// আপনার নিজস্ব CustomButtonWidget ব্যবহার করা হয়েছে
                   CustomButtonWidget(
                     title: "Reset Password",
                     onTap: () {
-                      // পাসওয়ার্ড রিসেট করার এপিআই লজিক এখানে হবে
                     },
                   ),
 
                   SizedBox(height: 20.h),
 
-                  /// ব্যাক টু লগইন টেক্সট বাটন
                   Center(
                     child: GestureDetector(
                       onTap: () {
-                        // আপনার লগইন স্ক্রিনের রুটে ব্যাক করার জন্য
                         Navigator.popUntil(context, (route) => route.isFirst);
                       },
                       child: RichText(
@@ -228,7 +220,6 @@ class ChangePasswordView extends StatelessWidget {
     );
   }
 
-  /// পাসওয়ার্ড রিকোয়ারমেন্ট রো আইটেম মেথড
   Widget _buildRequirementItem(String text) {
     return Padding(
       padding: EdgeInsets.only(bottom: 6.h),
@@ -237,7 +228,7 @@ class ChangePasswordView extends StatelessWidget {
           Icon(
             Icons.check_circle_outline, 
             size: 16.sp, 
-            color: const Color(0xFF00CFA5), // ইমেজের সেই গ্রিন কালার টিকমার্ক
+            color: const Color(0xFF00CFA5), 
           ),
           SizedBox(width: 8.w),
           Text(
