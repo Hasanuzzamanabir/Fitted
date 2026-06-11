@@ -21,6 +21,7 @@
 
 import 'package:fitted/features/auth/login/provider/login_tab_provider.dart';
 import 'package:fitted/features/auth/signup/provider/sign_up_tab_provider.dart';
+import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitted/features/splash/view/splash_screen.dart';
@@ -49,7 +50,7 @@ class Fitted extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           routes: AppRoute.appRoute,
-          initialRoute: SplashScreen.splashScreen,
+          initialRoute: ProfileView.profileView,
         ));
       },
     );

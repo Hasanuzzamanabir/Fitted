@@ -16,6 +16,10 @@ class ImagePath{
 static const String splashBackgroundImage ='$_basePath/splash.png';
 static const String onBoardingImage ='$_basePath/onboarding.jpg';
 static const String appbarimage ='$_basePath/appbarimage.png';
+static const String search ='$_basePath/search.png';
+static const String cross ='$_basePath/cross.png';
+static const String save ='$_basePath/save.png';
+static const String setting ='$_basePath/setting.png';
 
 
 

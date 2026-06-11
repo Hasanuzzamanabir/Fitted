@@ -8,6 +8,13 @@ import 'package:fitted/features/auth/signup/view/sign_up_email_otp.dart';
 import 'package:fitted/features/auth/signup/view/sign_up_phone_otp.dart';
 import 'package:fitted/features/auth/signup/view/signup_tab_screen.dart';
 import 'package:fitted/features/onboarding/view/onboardingScreen.dart';
+import 'package:fitted/features/profile_section/notification/view/notification.dart';
+import 'package:fitted/features/profile_section/profile/view/edit_profile.dart';
+import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
+import 'package:fitted/features/profile_section/setting/view/setting_view.dart';
+import 'package:fitted/features/profile_section/subscription/view/subscription_view.dart';
+import 'package:fitted/features/profile_section/support_and_priveacy/view/help_and_support.dart';
+import 'package:fitted/features/profile_section/support_and_priveacy/view/security.dart';
 import 'package:fitted/features/splash/view/splash_screen.dart';
 import 'package:fitted/features/subscription/view/subscription_view.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +33,13 @@ class AppRoute {
     SignUpTabScreen.signUpTabScreen: (context)=> const SignUpTabScreen(),
       SignUpEmailOtp.signUpEmailOtp: (context)=> const SignUpEmailOtp(),
       SignUpPhoneOtp.signUpPhoneOtp: (context)=> const SignUpPhoneOtp(),
-
-
+      ProfileView.profileView: (context)=> const ProfileView(),
+      EditProfileView.editProfileView: (context)=> const EditProfileView(),
+      SettingView.settingView: (context)=> const SettingView(),
+      NotificationsSettingsView.notificationsSettingsView: (context)=> const NotificationsSettingsView(),
+      SecuritySettingsView.securitySettingsView: (context)=> const SecuritySettingsView(),
+      HelpSupportView.helpSupportView: (context)=> const HelpSupportView(),
+    ManageSubscriptionView.manageSubscriptionView: (context)=> const ManageSubscriptionView(),
 
 
 
