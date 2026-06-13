@@ -21,6 +21,8 @@
 
 import 'package:fitted/features/auth/login/provider/login_tab_provider.dart';
 import 'package:fitted/features/auth/signup/provider/sign_up_tab_provider.dart';
+import 'package:fitted/features/preference/provider/preference_provider.dart';
+import 'package:fitted/features/preference/view/preference_flow_view.dart';
 import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,6 +44,7 @@ class Fitted extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(create: (_) => LoginTabProvider()),
             ChangeNotifierProvider(create: (_) => SignUpTabProvider()),
+            ChangeNotifierProvider(create: (_) => PreferenceProvider()),
           ],
         child: MaterialApp(
           title: 'Fitted',

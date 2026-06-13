@@ -122,7 +122,9 @@ static const String profileView = '/profileView';
                     Navigator.pushNamed(context, EditProfileView.editProfileView);
                   }),
                   const Divider(color: Colors.white10, height: 1),
-                  ProfileMenuTile(icon: Icons.accessibility_new_outlined, title: "Edit Style Preferences", onTap: () {}),
+                  ProfileMenuTile(icon: Icons.accessibility_new_outlined, title: "Edit Style Preferences", onTap: () {
+                    Navigator.pushNamed(context, '/editStylePreferencesView');
+                  }),
                   const Divider(color: Colors.white10, height: 1),
                   ProfileMenuTile(icon: Icons.credit_card_outlined, title: "Manage Subscription", onTap: () {
                     Navigator.pushNamed(context, '/manageSubscriptionView');

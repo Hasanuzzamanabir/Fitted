@@ -1,4 +1,5 @@
 import 'package:fitted/core/theme/app_colors.dart';
+import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
 import 'package:fitted/core/widgets/custom_text_field.dart';
@@ -15,7 +16,8 @@ class SecuritySettingsView extends StatelessWidget {
       backgroundColor: AppColors.bgprime,
       appBar: const CustomAppBar(
         title: 'Security',
-        leadingImagePath: 'assets/icons/cross.svg',
+        
+        leadingImagePath: ImagePath.cross,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
