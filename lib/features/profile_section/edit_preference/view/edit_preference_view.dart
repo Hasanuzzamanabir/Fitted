@@ -1,5 +1,6 @@
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/theme/font_manager.dart';
+import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
 import 'package:fitted/features/preference/provider/preference_provider.dart';
@@ -22,7 +23,7 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
   @override
   void initState() {
     super.initState();
-    // প্রোফাইল এপিআই বা লোকাল ডাটাবেজ থেকে আসা আগের ডাটা এখানে ইনিশিয়ালাইজ করতে হবে
+ 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<PreferenceProvider>(context, listen: false).initializeData(
         gender: "Female",
@@ -51,7 +52,7 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
       backgroundColor: AppColors.bgprime,
       appBar: const CustomAppBar(
         title: 'Edit style preferences',
-        leadingImagePath: 'assets/icons/cross.svg',
+        leadingImagePath: ImagePath.cross,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -262,7 +263,6 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
             CustomButtonWidget(
               title: "Save changes",
               onTap: () {
-                // এখানে Dio এপিআই কল করে চেঞ্জড ডাটা ব্যাকএন্ডে সাবমিট করে দেবেন
                 Navigator.pop(context);
               },
             ),

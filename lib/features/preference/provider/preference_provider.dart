@@ -10,11 +10,9 @@ class PreferenceProvider extends ChangeNotifier {
   String? _ageZone;
   String? get ageZone => _ageZone;
 
-  // স্টেপ ২: মাল্টিপল ভাইব সিলেকশনের জন্য এখন এটি List
   final List<String> _selectedVibes = [];
   List<String> get selectedVibes => _selectedVibes;
 
-  // স্টেপ ৩: কালার লিস্ট
   final List<Map<String, String>> _colorVibes = [
     {"name": "Neutrals", "hex": "E5E0D8"},
     {"name": "Earth", "hex": "3B2A24"},
@@ -25,7 +23,6 @@ class PreferenceProvider extends ChangeNotifier {
   ];
   List<Map<String, String>> get colorVibes => _colorVibes;
 
-  // স্টেপ ৩: মাল্টিপল কালার সিলেকশন লিস্ট
   final List<String> _selectedColors = [];
   List<String> get selectedColors => _selectedColors;
 
@@ -59,7 +56,6 @@ class PreferenceProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // স্টেপ ২: মাল্টিপল ভাইব টগল করার লজিক
   void toggleVibe(String vibeTitle) {
     if (_selectedVibes.contains(vibeTitle)) {
       _selectedVibes.remove(vibeTitle);
@@ -69,7 +65,6 @@ class PreferenceProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // স্টেপ ৩: মাল্টিপল কালার টগল করার লজিক
   void toggleColor(String colorHex) {
     if (_selectedColors.contains(colorHex)) {
       _selectedColors.remove(colorHex);

@@ -40,9 +40,13 @@ import 'package:fitted/core/theme/font_manager.dart';
 import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_section_title.dart';
+import 'package:fitted/features/profile_section/edit_preference/view/edit_preference_view.dart';
+import 'package:fitted/features/profile_section/notification/view/notification.dart';
 import 'package:fitted/features/profile_section/profile/view/edit_profile.dart';
 import 'package:fitted/features/profile_section/profile/widgets/profile_menu_tile.dart';
 import 'package:fitted/features/profile_section/profile/widgets/profile_state_card.dart';
+import 'package:fitted/features/profile_section/subscription/view/subscription_view.dart';
+import 'package:fitted/features/profile_section/support_and_priveacy/view/help_and_support.dart';
 import 'package:fitted/features/profile_section/support_and_priveacy/view/security.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,11 +65,11 @@ static const String profileView = '/profileView';
         showLeading: false,
         actionImagePath: ImagePath.setting,
         onActionTap: () {
-          Navigator.pushNamed(context, '/settingView');
+         Navigator.of(context, rootNavigator: true).pushNamed('/settingView');
         },
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 80.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -119,19 +123,26 @@ static const String profileView = '/profileView';
               child: Column(
                 children: [
                   ProfileMenuTile(icon: Icons.person_outline, title: "Edit Profile Details", onTap: () {
-                    Navigator.pushNamed(context, EditProfileView.editProfileView);
+                     Navigator.pushNamed(context, EditProfileView.editProfileView);
+                    //Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfileView()));
+
+                    //Navigator.of(context, rootNavigator: true).pushNamed(AppPage.editProfileView);
+
                   }),
                   const Divider(color: Colors.white10, height: 1),
                   ProfileMenuTile(icon: Icons.accessibility_new_outlined, title: "Edit Style Preferences", onTap: () {
-                    Navigator.pushNamed(context, '/editStylePreferencesView');
+                   // Navigator.pushNamed(context, '/editStylePreferencesView');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const EditStylePreferencesView()));
                   }),
                   const Divider(color: Colors.white10, height: 1),
                   ProfileMenuTile(icon: Icons.credit_card_outlined, title: "Manage Subscription", onTap: () {
-                    Navigator.pushNamed(context, '/manageSubscriptionView');
+                   // Navigator.pushNamed(context, '/manageSubscriptionView');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ManageSubscriptionView()));
                   }),
                   const Divider(color: Colors.white10, height: 1),
                   ProfileMenuTile(icon: Icons.notifications_none_outlined, title: "Notifications", onTap: () {
-                    Navigator.pushNamed(context, '/notificationsSettingsView');
+                    //Navigator.pushNamed(context, '/notificationsSettingsView');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationsSettingsView()));
                   }),
                   const Divider(color: Colors.white10, height: 1),
                   ProfileMenuTile(icon: Icons.bookmark_border_outlined, title: "My List", onTap: () {}),
@@ -149,11 +160,13 @@ static const String profileView = '/profileView';
               child: Column(
                 children: [
                   ProfileMenuTile(icon: Icons.lock_outline, title: "Security", onTap: () {
-                    Navigator.pushNamed(context, SecuritySettingsView.securitySettingsView);
+                   // Navigator.pushNamed(context, SecuritySettingsView.securitySettingsView);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SecuritySettingsView()));
                   }),
                   const Divider(color: Colors.white10, height: 1),
                   ProfileMenuTile(icon: Icons.headset_mic_outlined, title: "Help & Support", onTap: () {
-                    Navigator.pushNamed(context, '/helpSupportView');
+                    // Navigator.pushNamed(context, '/helpSupportView');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpSupportView()));
                   }),
                 ],
               ),

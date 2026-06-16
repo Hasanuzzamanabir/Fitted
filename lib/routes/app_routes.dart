@@ -1,4 +1,3 @@
-
 import 'package:fitted/features/auth/login/view/change_password_view.dart';
 import 'package:fitted/features/auth/login/view/custom_login_tab_screen.dart';
 import 'package:fitted/features/auth/login/view/forgot_password_otp.dart';
@@ -7,6 +6,7 @@ import 'package:fitted/features/auth/login/view/verify_phone_number_otp.dart';
 import 'package:fitted/features/auth/signup/view/sign_up_email_otp.dart';
 import 'package:fitted/features/auth/signup/view/sign_up_phone_otp.dart';
 import 'package:fitted/features/auth/signup/view/signup_tab_screen.dart';
+import 'package:fitted/features/bottom_nav_bar/view/bottom_nav_bar_view.dart';
 import 'package:fitted/features/onboarding/view/onboardingScreen.dart';
 import 'package:fitted/features/preference/view/preference_flow_view.dart';
 import 'package:fitted/features/profile_section/edit_preference/view/edit_preference_view.dart';
@@ -22,35 +22,36 @@ import 'package:fitted/features/subscription/view/subscription_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRoute {
-
- static final Map<String, WidgetBuilder>  appRoute = {
-    SplashScreen.splashScreen: (context)=> const SplashScreen(),
-    OnBoardingScreen.onBoardingScreen: (context)=> const OnBoardingScreen(),
-    SubscriptionView.subscriptionView: (context)=>  SubscriptionView(),
-    CustomLoginTabScreen.loginTabScreen: (context)=> const CustomLoginTabScreen(),
-    ForgotPasswordView.forgotPasswordView: (context)=> const ForgotPasswordView(),
-    ForgotPasswordOtp.forgotPasswordOtp: (context)=> const ForgotPasswordOtp(),
-    ChangePasswordView.changePasswordView: (context)=> const ChangePasswordView(),
-    VerifyPhoneNumberOtp.verifyPhoneNumberOtp: (context)=> const VerifyPhoneNumberOtp(),
-    SignUpTabScreen.signUpTabScreen: (context)=> const SignUpTabScreen(),
-      SignUpEmailOtp.signUpEmailOtp: (context)=> const SignUpEmailOtp(),
-      SignUpPhoneOtp.signUpPhoneOtp: (context)=> const SignUpPhoneOtp(),
-      ProfileView.profileView: (context)=> const ProfileView(),
-      EditProfileView.editProfileView: (context)=> const EditProfileView(),
-      SettingView.settingView: (context)=> const SettingView(),
-      NotificationsSettingsView.notificationsSettingsView: (context)=> const NotificationsSettingsView(),
-      SecuritySettingsView.securitySettingsView: (context)=> const SecuritySettingsView(),
-      HelpSupportView.helpSupportView: (context)=> const HelpSupportView(),
-    ManageSubscriptionView.manageSubscriptionView: (context)=> const ManageSubscriptionView(),
-    PreferenceFlowView.preferenceFlowView: (context)=> const PreferenceFlowView(),
-    EditStylePreferencesView.editstylepreference: (context)=> const EditStylePreferencesView(),
-
-
-
-
-
+  static final Map<String, WidgetBuilder> appRoute = {
+    SplashScreen.splashScreen: (context) => const SplashScreen(),
+    OnBoardingScreen.onBoardingScreen: (context) => const OnBoardingScreen(),
+    SubscriptionView.subscriptionView: (context) => SubscriptionView(),
+    CustomLoginTabScreen.loginTabScreen: (context) =>
+        const CustomLoginTabScreen(),
+    ForgotPasswordView.forgotPasswordView: (context) =>
+        const ForgotPasswordView(),
+    ForgotPasswordOtp.forgotPasswordOtp: (context) => const ForgotPasswordOtp(),
+    ChangePasswordView.changePasswordView: (context) =>
+        const ChangePasswordView(),
+    VerifyPhoneNumberOtp.verifyPhoneNumberOtp: (context) =>
+        const VerifyPhoneNumberOtp(),
+    SignUpTabScreen.signUpTabScreen: (context) => const SignUpTabScreen(),
+    SignUpEmailOtp.signUpEmailOtp: (context) => const SignUpEmailOtp(),
+    SignUpPhoneOtp.signUpPhoneOtp: (context) => const SignUpPhoneOtp(),
+    ProfileView.profileView: (context) => const ProfileView(),
+    EditProfileView.editProfileView: (context) => const EditProfileView(),
+    SettingView.settingView: (context) => const SettingView(),
+    NotificationsSettingsView.notificationsSettingsView: (context) =>
+        const NotificationsSettingsView(),
+    SecuritySettingsView.securitySettingsView: (context) =>
+        const SecuritySettingsView(),
+    HelpSupportView.helpSupportView: (context) => const HelpSupportView(),
+    ManageSubscriptionView.manageSubscriptionView: (context) =>
+        const ManageSubscriptionView(),
+    PreferenceFlowView.preferenceFlowView: (context) =>
+        const PreferenceFlowView(),
+    EditStylePreferencesView.editstylepreference: (context) =>
+        const EditStylePreferencesView(),
+    BottomNavBarView.bottomNavBarView: (context) => const BottomNavBarView(),
   };
-
-   
-  
 }

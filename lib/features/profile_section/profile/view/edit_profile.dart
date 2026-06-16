@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});
   static const String editProfileView = '/editProfileView';
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class EditProfileView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 24.h),
+            SizedBox(height: 24.h), 
             Center(
               child: Stack(
                 children: [

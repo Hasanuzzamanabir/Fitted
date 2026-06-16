@@ -52,7 +52,6 @@ class StepTwoView extends StatelessWidget {
             itemCount: vibes.length,
             itemBuilder: (context, index) {
               final vibe = vibes[index];
-              // এখন চেক হবে লিস্টে এই ভাইবটি আছে কি না
               bool isSelected = provider.selectedVibes.contains(vibe["title"]);
               
               return VibeCard(
@@ -76,7 +75,6 @@ class StepTwoView extends StatelessWidget {
             Expanded(
               child: CustomButtonWidget(
                 title: "Next",
-                // কমপক্ষে ১টি ভাইব সিলেক্ট করলে নেক্সট বাটন কাজ করবে
                 onTap: provider.selectedVibes.isNotEmpty ? () => provider.nextStep() : null,
               ),
             ),

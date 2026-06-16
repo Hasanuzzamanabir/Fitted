@@ -173,6 +173,7 @@ class SignUpEmailOtp extends StatelessWidget {
                   CustomButtonWidget(
                     title: "Verify OTP",
                     onTap: () {
+                      Navigator.pushNamed(context, '/bottomNavBarView');
                     },
                   ),
                 ],

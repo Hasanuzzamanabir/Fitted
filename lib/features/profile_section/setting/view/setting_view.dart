@@ -3,6 +3,7 @@ import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
 import 'package:fitted/core/widgets/custom_section_title.dart';
+import 'package:fitted/features/profile_section/profile/view/edit_profile.dart';
 import 'package:fitted/features/profile_section/profile/widgets/profile_menu_tile.dart';
 import 'package:fitted/features/profile_section/setting/widgets/custom_toggle_switch.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,10 @@ class _SettingViewState extends State<SettingView> {
                 child: Column(
                   children: [
                    
-                    ProfileMenuTile(icon: Icons.lock_outline, title: "Terms of service", onTap: () {},trailing: CustomToggleSwitch(leftLabel: "Off", rightLabel: "On", isRightSelected: true, onToggle: (val) {}),),
+                    ProfileMenuTile(icon: Icons.lock_outline, title: "Terms of service", onTap: () {
+                      // Navigator.pushNamed(context, '/editProfileView');
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfileView()));
+                    },trailing: CustomToggleSwitch(leftLabel: "Off", rightLabel: "On", isRightSelected: true, onToggle: (val) {}),),
                     const Divider(color: Colors.white10, height: 1),
                     ProfileMenuTile(icon: Icons.headset_mic_outlined, title: "Privacy policy", onTap: () {},trailing:Text("English(US)", style: TextStyle(color: Colors.white54, fontSize: 14.sp),) ,),
                   ],
