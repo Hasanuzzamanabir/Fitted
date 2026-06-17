@@ -1,3 +1,4 @@
+// 
 import 'package:flutter/material.dart';
 
 class PreferenceProvider extends ChangeNotifier {
@@ -9,6 +10,9 @@ class PreferenceProvider extends ChangeNotifier {
 
   String? _ageZone;
   String? get ageZone => _ageZone;
+
+  bool _isDressingKids = false;
+  bool get isDressingKids => _isDressingKids;
 
   final List<String> _selectedVibes = [];
   List<String> get selectedVibes => _selectedVibes;
@@ -56,6 +60,11 @@ class PreferenceProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setDressingKids(bool value) {
+    _isDressingKids = value;
+    notifyListeners();
+  }
+
   void toggleVibe(String vibeTitle) {
     if (_selectedVibes.contains(vibeTitle)) {
       _selectedVibes.remove(vibeTitle);
@@ -95,22 +104,25 @@ class PreferenceProvider extends ChangeNotifier {
     _priceRange = value;
     notifyListeners();
   }
+
   void initializeData({
-  required String gender,
-  required String ageZone,
-  required List<String> selectedVibes,
-  required List<String> selectedColors,
-  required String preferredFit,
-  required double priceRange,
-}) {
-  _gender = gender;
-  _ageZone = ageZone;
-  _selectedVibes.clear();
-  _selectedVibes.addAll(selectedVibes);
-  _selectedColors.clear();
-  _selectedColors.addAll(selectedColors);
-  _preferredFit = preferredFit;
-  _priceRange = priceRange;
-  notifyListeners();
-}
+    required String gender,
+    required String ageZone,
+    required bool isDressingKids,
+    required List<String> selectedVibes,
+    required List<String> selectedColors,
+    required String preferredFit,
+    required double priceRange,
+  }) {
+    _gender = gender;
+    _ageZone = ageZone;
+    _isDressingKids = isDressingKids;
+    _selectedVibes.clear();
+    _selectedVibes.addAll(selectedVibes);
+    _selectedColors.clear();
+    _selectedColors.addAll(selectedColors);
+    _preferredFit = preferredFit;
+    _priceRange = priceRange;
+    notifyListeners();
+  }
 }

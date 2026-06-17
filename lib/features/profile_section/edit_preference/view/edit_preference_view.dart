@@ -31,7 +31,7 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
         selectedVibes: ["Streetwear"],
         selectedColors: ["2A2A2A"],
         preferredFit: "Regular",
-        priceRange: 0.6,
+        priceRange: 0.6, isDressingKids: false,
       );
     });
   }

@@ -44,16 +44,21 @@ class PreferenceFlowView extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      "Skip",
-                      style: TextStyle(
-                        color: Colors.white54,
-                        fontSize: 13.sp,
+                  if (provider.currentStep < 3)
+                    GestureDetector(
+                      onTap: () {
+                        provider.nextStep();
+                      },
+                      child: Text(
+                        "Skip",
+                        style: TextStyle(
+                          color: Colors.white54,
+                          fontSize: 13.sp,
+                        ),
                       ),
-                    ),
-                  ),
+                    )
+                  else
+                    SizedBox(width: 30.w),
                 ],
               ),
               SizedBox(height: 12.h),

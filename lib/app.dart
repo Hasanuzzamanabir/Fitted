@@ -3,6 +3,7 @@
 import 'package:fitted/features/auth/login/provider/login_tab_provider.dart';
 import 'package:fitted/features/auth/signup/provider/sign_up_tab_provider.dart';
 import 'package:fitted/features/bottom_nav_bar/provider/bottom_nav_bar_provider.dart';
+import 'package:fitted/features/plan_outfit_view/provider/outfit_recomandation_provider.dart';
 import 'package:fitted/features/preference/provider/preference_provider.dart';
 import 'package:fitted/features/preference/view/preference_flow_view.dart';
 import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
@@ -77,6 +78,7 @@ class _FittedState extends State<Fitted> {
             ChangeNotifierProvider(create: (_) => PreferenceProvider()),
             ChangeNotifierProvider(create: (_) => BottomNavBarProvider()),
             ChangeNotifierProvider(create: (_) => SubscriptionProvider()),
+            ChangeNotifierProvider(create: (_) => OutfitRecommendationProvider()),
           ],
           child: MaterialApp(
             title: 'Fitted',
@@ -86,7 +88,7 @@ class _FittedState extends State<Fitted> {
             ),
             navigatorObservers: [RouteLoggerObserver()],
             routes: AppRoute.appRoute,
-            initialRoute: SplashScreen.splashScreen,
+            initialRoute: PreferenceFlowView.preferenceFlowView,
           ),
         );
       },
