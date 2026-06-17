@@ -20,6 +20,7 @@ static const String search ='$_basePath/search.png';
 static const String cross ='$_basePath/cross.png';
 static const String save ='$_basePath/save.png';
 static const String setting ='$_basePath/setting.png';
+static const String google ='$_basePath/google.png';
 
 
 

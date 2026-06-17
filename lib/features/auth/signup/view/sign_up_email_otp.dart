@@ -63,7 +63,7 @@ class SignUpEmailOtp extends StatelessWidget {
                     ),
                     SizedBox(height: 12.h),
                     Text(
-                      "Verify Email Address", 
+                      "Let's Get Styled", 
                       style: TextStyle(
                         color: Colors.white, 
                         fontSize: 22.sp, 
@@ -72,7 +72,7 @@ class SignUpEmailOtp extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     Text(
-                      "Enter the 4-digit code that you receive in your account", 
+                      "Verify email to continue your journey", 
                       style: TextStyle(
                         color: Colors.white70, 
                         fontSize: 13.sp,

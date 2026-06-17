@@ -1,4 +1,5 @@
 import 'package:fitted/core/theme/app_colors.dart';
+import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_social_button.dart';
 import 'package:fitted/core/widgets/custom_text_field.dart';
 import 'package:fitted/features/auth/login/view/forgot_password_view.dart';
@@ -51,7 +52,7 @@ class EmailForm extends StatelessWidget {
         const SizedBox(height: 20),
         const Center(child: Text("Or Continue with", style: TextStyle(color: AppColors.subtext, fontSize: 13))),
         const SizedBox(height: 15),
-        SocialButton(label: "Google", icon: Icons.g_mobiledata, iconColor: Colors.red, onTap: () {}),
+        SocialButton(label: "Google", icon: ImagePath.google, onTap: () {}),
       ],
     );
   }

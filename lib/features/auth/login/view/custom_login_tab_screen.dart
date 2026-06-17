@@ -53,7 +53,7 @@ class CustomLoginTabScreen extends StatelessWidget {
                   children: [
                     Text("Fitted.", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Serif')),
                     SizedBox(height: 5),
-                    Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
+                    Text("Find Your Vibe", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
                     SizedBox(height: 4),
                     Text("Login to continue your journey", style: TextStyle(color: Colors.white70, fontSize: 13)),
                     SizedBox(height: 20),

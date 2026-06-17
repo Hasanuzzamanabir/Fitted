@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 class SocialButton extends StatelessWidget {
   final String label;
-  final IconData icon;
-  final Color iconColor;
+  final String icon;
+  
   final VoidCallback onTap;
 
   const SocialButton({
     super.key,
     required this.label,
     required this.icon,
-    required this.iconColor,
     required this.onTap,
   });
 
@@ -29,7 +28,7 @@ class SocialButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 26, color: iconColor),
+            Image.asset(icon, width: 26, height: 26),
             const SizedBox(width: 8),
             Text(
               label,

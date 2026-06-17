@@ -72,7 +72,7 @@ class SignUpPhoneOtp extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     Text(
-                      "Enter the 4-digit code that you receive in your account", 
+                      "Create account to continue your journey", 
                       style: TextStyle(
                         color: Colors.white70, 
                         fontSize: 13.sp,

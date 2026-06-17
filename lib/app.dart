@@ -1,23 +1,4 @@
-// import 'package:fitted/features/splash/view/splash_screen.dart';
-// import 'package:fitted/routes/app_routes.dart';
-// import 'package:flutter/material.dart';
 
-// class Fitted extends StatelessWidget {
-//   const Fitted({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Fitted',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       debugShowCheckedModeBanner: false,
-//       routes: AppRoute.appRoute,
-//       initialRoute: SplashScreen.splashScreen,
-//     );
-//   }
-// }
 
 import 'package:fitted/features/auth/login/provider/login_tab_provider.dart';
 import 'package:fitted/features/auth/signup/provider/sign_up_tab_provider.dart';
@@ -25,6 +6,8 @@ import 'package:fitted/features/bottom_nav_bar/provider/bottom_nav_bar_provider.
 import 'package:fitted/features/preference/provider/preference_provider.dart';
 import 'package:fitted/features/preference/view/preference_flow_view.dart';
 import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
+import 'package:fitted/features/subscription/provider/subscription_provider.dart';
+import 'package:fitted/features/subscription/view/subscription_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitted/features/splash/view/splash_screen.dart';
@@ -93,6 +76,7 @@ class _FittedState extends State<Fitted> {
             ChangeNotifierProvider(create: (_) => SignUpTabProvider()),
             ChangeNotifierProvider(create: (_) => PreferenceProvider()),
             ChangeNotifierProvider(create: (_) => BottomNavBarProvider()),
+            ChangeNotifierProvider(create: (_) => SubscriptionProvider()),
           ],
           child: MaterialApp(
             title: 'Fitted',

@@ -1,4 +1,5 @@
 import 'package:fitted/core/theme/app_colors.dart';
+import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
 import 'package:fitted/core/widgets/custom_social_button.dart';
 import 'package:fitted/core/widgets/custom_text_field.dart';
@@ -32,7 +33,7 @@ class PhoneForm extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 15),
-        SocialButton(label: "Google", icon: Icons.g_mobiledata, iconColor: Colors.red, onTap: () {}),
+        SocialButton(label: "Google", icon: ImagePath.google, onTap: () {}),
       ],
     );
   }

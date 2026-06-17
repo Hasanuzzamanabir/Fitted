@@ -1,8 +1,13 @@
 import 'package:fitted/core/theme/app_colors.dart';
+import 'package:fitted/core/theme/font_manager.dart';
 import 'package:fitted/core/utils/image_path.dart';
+import 'package:fitted/core/widgets/custom_app_bar.dart';
+import 'package:fitted/core/widgets/custom_button_widgets.dart';
+import 'package:fitted/features/auth/login/view/custom_login_tab_screen.dart';
 import 'package:fitted/features/auth/signup/provider/sign_up_tab_provider.dart';
 import 'package:fitted/features/auth/signup/widgets/sign_up_email_form.dart';
 import 'package:fitted/features/auth/signup/widgets/sign_up_phone_form.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -13,9 +18,9 @@ class SignUpTabScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final authProvider = context.watch<SignUpTabProvider>();
+    final authProvider = context.watch<SignUpTabProvider>();
     final size = MediaQuery.of(context).size;
-  
+
     return Scaffold(
       backgroundColor: AppColors.bgSecondary,
       body: SingleChildScrollView(
@@ -26,7 +31,7 @@ class SignUpTabScreen extends StatelessWidget {
               height: size.height * 0.25,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(ImagePath.appbarimage), 
+                  image: AssetImage(ImagePath.appbarimage),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.only(
@@ -53,7 +58,7 @@ class SignUpTabScreen extends StatelessWidget {
                   children: [
                     Text("Fitted.", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Serif')),
                     SizedBox(height: 5),
-                    Text("Welcome", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
+                    Text("Let's Get Styled", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
                     SizedBox(height: 4),
                     Text("Create account to continue your journey", style: TextStyle(color: Colors.white70, fontSize: 13)),
                     SizedBox(height: 20),
@@ -61,7 +66,6 @@ class SignUpTabScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             Transform.translate(
               offset: const Offset(0, -25),
               child: Padding(
@@ -113,9 +117,7 @@ class SignUpTabScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     const SizedBox(height: 25),
-
                     IndexedStack(
                       index: authProvider.selectedIndex,
                       children: const [
@@ -123,9 +125,8 @@ class SignUpTabScreen extends StatelessWidget {
                         SignUpPhoneForm(),
                       ],
                     ),
-                    
                     const SizedBox(height: 30),
-                    _buildBottomSignUpText(),
+                    _buildBottomSignUpText(context),
                   ],
                 ),
               ),
@@ -136,16 +137,20 @@ class SignUpTabScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomSignUpText() {
+  Widget _buildBottomSignUpText(BuildContext context) {
     return Center(
       child: RichText(
-        text: const TextSpan(
-          text: "Already have an account?",
-          style: TextStyle(color: AppColors.subtext, fontSize: 14),
+        text: TextSpan(
+          text: "Already have an account? ",
+          style: const TextStyle(color: AppColors.subtext, fontSize: 14),
           children: [
             TextSpan(
               text: "Log In",
-              style: TextStyle(color: AppColors.subtext, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: AppColors.subtext, fontWeight: FontWeight.bold),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.pushNamed(context, CustomLoginTabScreen.loginTabScreen);
+                },
             ),
           ],
         ),

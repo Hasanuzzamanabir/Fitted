@@ -1,11 +1,13 @@
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/theme/font_manager.dart';
+import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/features/explore/widgets/check_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/outfit_breakdown_item.dart';
 import '../widgets/shop_look_card.dart';
+import '../widgets/share_look_bottom_sheet.dart';
 
 class ExploreView extends StatelessWidget {
   const ExploreView({super.key});
@@ -15,13 +17,16 @@ class ExploreView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgprime,
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Saturday · 8pm\nRooftop Dinner",
-        leadingImagePath: 'assets/icons/cross.svg',
-        actionImagePath: 'assets/icons/share.svg',
+        leadingImagePath: ImagePath.cross,
+        actionImagePath: ImagePath.save,
+        onActionTap: () {
+          ShareLookBottomSheet.show(context);
+        },
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 80.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -79,11 +84,11 @@ class ExploreView extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.auto_awesome, color: Colors.white, size: 18.sp),
+                          Icon(Icons.auto_awesome, color: Colors.white, size: 12.sp),
                           SizedBox(width: 8.w),
                           Text(
                             "Try another vibe",
-                            style: FontManager.dmSansH3().copyWith(color: Colors.white, fontWeight: FontWeight.w600),
+                            style: FontManager.dmSansH3().copyWith(color: Colors.white,fontSize: 12.sp, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -104,25 +109,25 @@ class ExploreView extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 16.w,
               mainAxisSpacing: 20.h,
-              childAspectRatio: 0.68,
+              childAspectRatio: 0.62,
               children: const [
                 OutfitBreakdownItem(
-                  imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+                  imageUrl: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=600&auto=format&fit=crop',
                   brand: "Everlane",
                   description: "Silk Camisole",
                 ),
                 OutfitBreakdownItem(
-                  imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+                  imageUrl: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop',
                   brand: "Reformation",
                   description: "Tailored Wide Leg",
                 ),
                 OutfitBreakdownItem(
-                  imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+                  imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=600&auto=format&fit=crop',
                   brand: "Anine Bing",
                   description: "Oversized Blazer",
                 ),
                 OutfitBreakdownItem(
-                  imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+                  imageUrl: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop',
                   brand: "Gucci",
                   description: "Leather Loafers",
                 ),
@@ -169,14 +174,14 @@ class ExploreView extends StatelessWidget {
               child: Row(
                 children: [
                   const ShopLookCard(
-                    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+                    imageUrl: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600&auto=format&fit=crop',
                     brand: "Aimé Leon Dore",
                     title: "Silk-blend shirt, rust",
                     price: "\$245",
                   ),
                   SizedBox(width: 16.w),
                   const ShopLookCard(
-                    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+                    imageUrl: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=600&auto=format&fit=crop',
                     brand: "Studio Nicholson",
                     title: "Pleated trouser, ink",
                     price: "\$320",

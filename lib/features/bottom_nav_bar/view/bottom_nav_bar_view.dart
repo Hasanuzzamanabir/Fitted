@@ -129,36 +129,38 @@ class BottomNavBarView extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () => provider.handleWillPop(),
-      child: Scaffold(
-        backgroundColor: AppColors.bgprime,
-        extendBody: true,
-        body: IndexedStack(
-          index: provider.currentIndex,
-          children: screens,
-        ),
-        bottomNavigationBar: Container(
-          margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 20.h),
-          height: 72.h,
-          decoration: BoxDecoration(
-            color: const Color(0xFF131116),
-            borderRadius: BorderRadius.circular(36.r),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFFF83E5A).withOpacity(0.40),
-                blurRadius: 20.r,
-                spreadRadius: 0.r,
-                offset: const Offset(0, 0),
-              ),
-            ],
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: AppColors.bgprime,
+          extendBody: true,
+          body: IndexedStack(
+            index: provider.currentIndex,
+            children: screens,
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(provider, 0, Icons.home_outlined, "Home"),
-              _buildNavItem(provider, 1, Icons.explore_outlined, "Explore"),
-              _buildNavItem(provider, 2, Icons.bookmark_border_rounded, "Saved"),
-              _buildNavItem(provider, 3, Icons.account_circle_outlined, "Profile"),
-            ],
+          bottomNavigationBar: Container(
+            margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 2.h),
+            height: 72.h,
+            decoration: BoxDecoration(
+              color: const Color(0xFF131116),
+              borderRadius: BorderRadius.circular(36.r),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFFF83E5A).withOpacity(0.40),
+                  blurRadius: 20.r,
+                  spreadRadius: 0.r,
+                  offset: const Offset(0, 0),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildNavItem(provider, 0, Icons.home_outlined, "Home"),
+                _buildNavItem(provider, 1, Icons.explore_outlined, "Explore"),
+                _buildNavItem(provider, 2, Icons.bookmark_border_rounded, "Saved"),
+                _buildNavItem(provider, 3, Icons.account_circle_outlined, "Profile"),
+              ],
+            ),
           ),
         ),
       ),
