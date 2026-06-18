@@ -25,8 +25,8 @@ class CustomToggleSwitch extends StatelessWidget {
     return GestureDetector(
       onTap: () => onToggle(!isRightSelected),
       child: Container(
-        width: width ?? 100.w,
-        height: height ?? 38.h,
+        width: width ?? 60.w,
+        height: height ?? 30.h,
         padding: EdgeInsets.all(4.w),
         decoration: BoxDecoration(
           color: Colors.white10,

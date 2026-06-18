@@ -1,5 +1,6 @@
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/theme/font_manager.dart';
+import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/features/event_section/view/create_event_view.dart';
 import 'package:fitted/features/event_section/widgets/custom_calender_widget.dart';
@@ -28,7 +29,8 @@ class _CalendarViewState extends State<CalendarView> {
       backgroundColor: AppColors.bgprime,
       appBar: const CustomAppBar(
         title: "Calendar",
-        leadingImagePath: 'assets/icons/cross.svg',
+        leadingImagePath: ImagePath.cross,
+         actionImagePath: ImagePath.save,
       ),
       body: Stack(
         children: [

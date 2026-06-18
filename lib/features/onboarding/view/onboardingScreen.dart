@@ -1,6 +1,8 @@
 import 'package:fitted/core/theme/app_colors.dart';
+import 'package:fitted/features/auth/login/view/custom_login_tab_screen.dart';
 import 'package:fitted/features/auth/signup/view/signup_tab_screen.dart';
 import 'package:fitted/features/subscription/view/subscription_view.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
@@ -70,18 +72,18 @@ CustomButtonWidget(
                                 color: AppColors.textprimary,),
                               children: [
                                 TextSpan(
-                                  text: 'Sign In',
+                                  text: 'Log In',
                                   style: TextStyle(
-                                    color: AppColors.subtext,
+                                    color: AppColors.primecolor,
                                     fontWeight: FontWeight.w600,
                                   ),  
-                                  // style: AppTextStyle.h5.copyWith(
-                                  //   color: AppColors.primarycolor,
-                                  // ),
-                                 // recognizer: TapGestureRecognizer()
-                                    // ..onTap = () {
-                                    //   Get.to(() => const SignupView());
-                                    // },
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                     Navigator.pushReplacementNamed(
+                              context,
+                              CustomLoginTabScreen.loginTabScreen,
+                            );
+                                    },
                                 ),
                               ],
                             ),

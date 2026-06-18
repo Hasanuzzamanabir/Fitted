@@ -19,7 +19,7 @@ class ExploreView extends StatelessWidget {
       backgroundColor: AppColors.bgprime,
       appBar: CustomAppBar(
         title: "Saturday · 8pm\nRooftop Dinner",
-        leadingImagePath: ImagePath.cross,
+        //leadingImagePath: ImagePath.cross,
         actionImagePath: ImagePath.save,
         onActionTap: () {
           ShareLookBottomSheet.show(context);

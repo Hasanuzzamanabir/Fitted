@@ -68,7 +68,7 @@ class SubscriptionView extends StatelessWidget {
               TrialButton(onTap: () {
                 Navigator.pushReplacementNamed(
                   context,
-                  "/logintabscreen",
+                  "/preferenceFlowView",
                   arguments: subscriptionProvider.selectedPlanTitle, 
                 );
               }),

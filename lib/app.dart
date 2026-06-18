@@ -88,7 +88,7 @@ class _FittedState extends State<Fitted> {
             ),
             navigatorObservers: [RouteLoggerObserver()],
             routes: AppRoute.appRoute,
-            initialRoute: PreferenceFlowView.preferenceFlowView,
+            initialRoute: SplashScreen.splashScreen,
           ),
         );
       },

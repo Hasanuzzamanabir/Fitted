@@ -706,7 +706,7 @@ class OutfitRecommendationView extends StatelessWidget {
         SizedBox(width: 12.w),
         Expanded(
           child: GestureDetector(
-            onTap: () => _showTryAnotherVibeBottomSheet(context),
+            onTap: () => showTryAnotherVibeBottomSheet(context),
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 14.h),
               decoration: BoxDecoration(
@@ -731,7 +731,7 @@ class OutfitRecommendationView extends StatelessWidget {
     );
   }
 
-  void _showTryAnotherVibeBottomSheet(BuildContext mainContext) {
+  void showTryAnotherVibeBottomSheet(BuildContext mainContext) {
     final TextEditingController changeController = TextEditingController();
 
     showDialog(

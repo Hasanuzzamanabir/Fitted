@@ -4,6 +4,7 @@ import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
 import 'package:fitted/features/plan_outfit_view/view/outfit_recomendation_view.dart';
+import 'package:fitted/features/plan_outfit_view/view/style_loading_screen.dart';
 import 'package:fitted/features/plan_outfit_view/widget/outfit_toggle_option_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -144,7 +145,7 @@ class _OutfitDetailsFormViewState extends State<OutfitDetailsFormView> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const OutfitRecommendationView(),
+                      builder: (context) => const StylingLoadingScreen(),
                     ),
                   );
                 },

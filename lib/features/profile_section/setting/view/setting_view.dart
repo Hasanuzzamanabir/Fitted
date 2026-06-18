@@ -76,7 +76,7 @@ class _SettingViewState extends State<SettingView> {
               ),
               SizedBox(height: 40.h),
             CustomButtonWidget(title:   "Logout", onTap: () {
-        Navigator.pushNamed(context, '/loginView');
+        Navigator.pushNamed(context, '/logintabscreen');
             }),
           ],
         ),

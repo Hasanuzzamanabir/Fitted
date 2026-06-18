@@ -8,9 +8,13 @@ import 'package:fitted/features/auth/signup/view/sign_up_phone_otp.dart';
 import 'package:fitted/features/auth/signup/view/signup_tab_screen.dart';
 import 'package:fitted/features/bottom_nav_bar/view/bottom_nav_bar_view.dart';
 import 'package:fitted/features/event_section/view/calender_view.dart';
+import 'package:fitted/features/home/view/home_view.dart';
 import 'package:fitted/features/onboarding/view/onboardingScreen.dart';
+import 'package:fitted/features/plan_outfit_view/view/outfit_recomendation_view.dart';
 import 'package:fitted/features/plan_outfit_view/view/plan_outfit_view.dart';
+import 'package:fitted/features/plan_outfit_view/view/style_loading_screen.dart';
 import 'package:fitted/features/preference/view/preference_flow_view.dart';
+import 'package:fitted/features/preference/view/profile_loading_view.dart';
 import 'package:fitted/features/profile_section/edit_preference/view/edit_preference_view.dart';
 import 'package:fitted/features/profile_section/notification/view/notification.dart';
 import 'package:fitted/features/profile_section/profile/view/edit_profile.dart';
@@ -41,6 +45,8 @@ class AppRoute {
     SignUpTabScreen.signUpTabScreen: (context) => const SignUpTabScreen(),
     SignUpEmailOtp.signUpEmailOtp: (context) => const SignUpEmailOtp(),
     SignUpPhoneOtp.signUpPhoneOtp: (context) => const SignUpPhoneOtp(),
+    HomeView.homeView: (context) => const HomeView(),
+    PlanOutfitView.planOutfitView: (context) => const PlanOutfitView(),
     ProfileView.profileView: (context) => const ProfileView(),
     EditProfileView.editProfileView: (context) => const EditProfileView(),
     SettingView.settingView: (context) => const SettingView(),
@@ -58,6 +64,10 @@ class AppRoute {
     BottomNavBarView.bottomNavBarView: (context) => const BottomNavBarView(),
     WardrobeView.wardrobeView: (context) => const WardrobeView(),
     CalendarView.calendarView: (context) => const CalendarView(),
-    PlanOutfitView.planOutfitView: (context) => const PlanOutfitView(),
+    ProfileLoadingView.profileLoadingView: (context) => const ProfileLoadingView(),
+    StylingLoadingScreen.stylingLoadingScreen: (context) => const StylingLoadingScreen(),
+    OutfitRecommendationView.outfitRecommendationView: (context) => const OutfitRecommendationView(),
   };
+
+ 
 }

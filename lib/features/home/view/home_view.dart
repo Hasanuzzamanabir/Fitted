@@ -9,6 +9,7 @@ import '../widgets/home_tab_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
+  static const String homeView = '/homeView';
 
   @override
   Widget build(BuildContext context) {

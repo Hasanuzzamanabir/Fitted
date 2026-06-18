@@ -1,6 +1,7 @@
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/theme/font_manager.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
+import 'package:fitted/features/preference/view/profile_loading_view.dart'; // 👈 আপনার সঠিক পাথ অনুযায়ী ইমপোর্ট চেক করে নিন
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -75,7 +76,12 @@ class StepFourView extends StatelessWidget {
         const Spacer(),
         CustomButtonWidget(
           title: "Complete profile",
-          onTap: (provider.preferredFit != null) ? () {} : null,
+          onTap: (provider.preferredFit != null) ? () {
+            Navigator.pushNamed(
+              context, 
+              ProfileLoadingView.profileLoadingView, 
+            );
+          } : null,
         ),
         Center(
           child: TextButton(
