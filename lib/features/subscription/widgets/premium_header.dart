@@ -9,28 +9,7 @@ class PremiumHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 20.sp,
-              ),
-              SizedBox(width: 8.w),
-              Text(
-                "Back",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        ),
+       
         SizedBox(height: 20.h),
         Center(
           child: Column(

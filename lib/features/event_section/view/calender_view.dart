@@ -30,7 +30,6 @@ class _CalendarViewState extends State<CalendarView> {
       appBar: const CustomAppBar(
         title: "Calendar",
         leadingImagePath: ImagePath.cross,
-         actionImagePath: ImagePath.save,
       ),
       body: Stack(
         children: [

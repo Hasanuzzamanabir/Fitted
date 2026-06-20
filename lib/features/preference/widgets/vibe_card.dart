@@ -170,7 +170,7 @@ class VibeCard extends StatelessWidget {
                         title,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16.sp,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Serif',
                         ),

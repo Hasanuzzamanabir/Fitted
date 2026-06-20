@@ -8,6 +8,8 @@ import 'package:fitted/features/auth/signup/view/sign_up_phone_otp.dart';
 import 'package:fitted/features/auth/signup/view/signup_tab_screen.dart';
 import 'package:fitted/features/bottom_nav_bar/view/bottom_nav_bar_view.dart';
 import 'package:fitted/features/event_section/view/calender_view.dart';
+import 'package:fitted/features/event_section/view/event_details_view.dart';
+import 'package:fitted/features/explore/view/explore_view.dart';
 import 'package:fitted/features/home/view/home_view.dart';
 import 'package:fitted/features/onboarding/view/onboardingScreen.dart';
 import 'package:fitted/features/plan_outfit_view/view/outfit_recomendation_view.dart';
@@ -67,6 +69,8 @@ class AppRoute {
     ProfileLoadingView.profileLoadingView: (context) => const ProfileLoadingView(),
     StylingLoadingScreen.stylingLoadingScreen: (context) => const StylingLoadingScreen(),
     OutfitRecommendationView.outfitRecommendationView: (context) => const OutfitRecommendationView(),
+    EventDetailsView.eventDetailsView: (context) => const EventDetailsView(isLookGenerated: false),
+    ExploreView.exploreView: (context) => const ExploreView(),
   };
 
  

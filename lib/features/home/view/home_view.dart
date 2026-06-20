@@ -74,8 +74,8 @@ class HomeView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.baseline, // 👈 বেসলাইন এলাইনমেন্ট
-          textBaseline: TextBaseline.alphabetic, // 👈 এটি অবশ্যই Row-এর প্রোপার্টি হিসেবে থাকবে
+          crossAxisAlignment: CrossAxisAlignment.baseline, 
+          textBaseline: TextBaseline.alphabetic, 
           children: [
              Text(
       "⛅",
@@ -174,7 +174,7 @@ class HomeView extends StatelessWidget {
               extraAvatarsCount: 2,
             ),
             SizedBox(height: 16.h),
-            _buildResponsiveUpcomingCard(),
+            _buildResponsiveUpcomingCard(context),
             SizedBox(height: 24.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -231,7 +231,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _buildResponsiveUpcomingCard() {
+  Widget _buildResponsiveUpcomingCard(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
@@ -290,22 +290,34 @@ class HomeView extends StatelessWidget {
             ),
           ),
           SizedBox(width: 8.w),
-          Flexible(
-            fit: FlexFit.loose,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-              decoration: BoxDecoration(
-                color: const Color(0xFFFF4B6B),
-                borderRadius: BorderRadius.circular(20.r),
-              ),
-              child: Text(
-                "Prep Now →",
-                maxLines: 1,
-                overflow: TextOverflow.clip,
-                style: FontManager.dmSansH3().copyWith(color: Colors.white, fontSize: 12.sp, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
+       Flexible(
+  fit: FlexFit.loose,
+  child: GestureDetector(
+    onTap: () {
+      Navigator.pushNamed(
+        context, 
+        '/eventDetailsView', 
+      );
+    },
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFF4B6B),
+        borderRadius: BorderRadius.circular(20.r),
+      ),
+      child: Text(
+        "Prep Now →",
+        maxLines: 1,
+        overflow: TextOverflow.clip,
+        style: FontManager.dmSansH3().copyWith(
+          color: Colors.white, 
+          fontSize: 12.sp, 
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  ),
+),
         ],
       ),
     );

@@ -403,6 +403,7 @@ import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/try_another_vibe_dialouge.dart';
 import 'package:fitted/features/explore/widgets/check_list_tile.dart';
+import 'package:fitted/features/explore/widgets/share_look_bottom_sheet.dart';
 import 'package:fitted/features/explore/widgets/shop_look_card.dart';
 import 'package:fitted/features/plan_outfit_view/provider/outfit_recomandation_provider.dart';
 import 'package:flutter/material.dart';
@@ -447,10 +448,13 @@ class _EventDetailsViewState extends State<EventDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgprime,
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "",
         leadingImagePath: ImagePath.cross,
-        actionImagePath: ImagePath.save,
+      actionImagePath: ImagePath.save,
+        onActionTap: () {
+          ShareLookBottomSheet.show(context);
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16.w),

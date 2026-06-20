@@ -146,7 +146,7 @@ class SignUpTabScreen extends StatelessWidget {
           children: [
             TextSpan(
               text: "Log In",
-              style: const TextStyle(color: AppColors.subtext, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: AppColors.primecolor, fontWeight: FontWeight.bold),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   Navigator.pushNamed(context, CustomLoginTabScreen.loginTabScreen);

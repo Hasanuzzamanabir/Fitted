@@ -109,6 +109,17 @@ class ProfileView extends StatelessWidget {
                     ),
                     const Divider(color: Colors.white10, height: 1),
                     ProfileMenuTile(
+                      icon: Icons.accessibility_new_outlined,
+                      title: "Outfit sharing groups",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const EditStylePreferencesView()),
+                        );
+                      },
+                    ),
+                    const Divider(color: Colors.white10, height: 1),
+                    ProfileMenuTile(
                       icon: Icons.credit_card_outlined,
                       title: "Manage Subscription",
                       onTap: () {
@@ -129,8 +140,7 @@ class ProfileView extends StatelessWidget {
                         );
                       },
                     ),
-                    const Divider(color: Colors.white10, height: 1),
-                    ProfileMenuTile(icon: Icons.bookmark_border_outlined, title: "My List", onTap: () {}),
+           
                   ],
                 ),
               ),

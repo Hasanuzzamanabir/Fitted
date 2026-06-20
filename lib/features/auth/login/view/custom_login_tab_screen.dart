@@ -1,8 +1,11 @@
+
 import 'package:fitted/core/theme/app_colors.dart';
 import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/features/auth/login/provider/login_tab_provider.dart';
 import 'package:fitted/features/auth/login/widget/login_form.dart';
 import 'package:fitted/features/auth/login/widget/phone_form.dart';
+import 'package:fitted/features/auth/signup/view/signup_tab_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -125,7 +128,7 @@ class CustomLoginTabScreen extends StatelessWidget {
                     ),
                     
                     const SizedBox(height: 30),
-                    _buildBottomSignUpText(),
+                    _buildBottomSignUpText(context),
                   ],
                 ),
               ),
@@ -136,16 +139,23 @@ class CustomLoginTabScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomSignUpText() {
+  Widget _buildBottomSignUpText(BuildContext context) {
     return Center(
       child: RichText(
-        text: const TextSpan(
+        text: TextSpan(
           text: "Don't have account? ",
-          style: TextStyle(color: AppColors.subtext, fontSize: 14),
+          style: const TextStyle(color: AppColors.subtext, fontSize: 14),
           children: [
             TextSpan(
               text: "Create Account",
-              style: TextStyle(color: AppColors.subtext, fontWeight: FontWeight.bold),
+              style: const TextStyle(color: AppColors.primecolor, fontWeight: FontWeight.bold),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.pushNamed(
+                    context, 
+                    SignUpTabScreen.signUpTabScreen, 
+                  );
+                },
             ),
           ],
         ),

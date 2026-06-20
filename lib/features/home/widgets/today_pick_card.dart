@@ -79,41 +79,44 @@ class TodayPickCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ...List.generate(avatarUrls.length, (index) {
-                          return SizedBox(
-                            width: index == 0 ? 28.r : 18.r,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: CircleAvatar(
-                                radius: 14.r,
-                                backgroundImage: NetworkImage(avatarUrls[index]),
+                    GestureDetector(
+                      onTap: (){Navigator.pushNamed(context, '/exploreView');},
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ...List.generate(avatarUrls.length, (index) {
+                            return SizedBox(
+                              width: index == 0 ? 28.r : 18.r,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: CircleAvatar(
+                                  radius: 14.r,
+                                  backgroundImage: NetworkImage(avatarUrls[index]),
+                                ),
                               ),
-                            ),
-                          );
-                        }),
-                        if (extraAvatarsCount > 0)
-                          SizedBox(
-                            width: 18.r,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: CircleAvatar(
-                                radius: 14.r,
-                                backgroundColor: const Color(0xFFFF4B6B),
-                                child: Text(
-                                  "+$extraAvatarsCount",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.bold,
+                            );
+                          }),
+                          if (extraAvatarsCount > 0)
+                            SizedBox(
+                              width: 18.r,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: CircleAvatar(
+                                  radius: 14.r,
+                                  backgroundColor: const Color(0xFFFF4B6B),
+                                  child: Text(
+                                    "+$extraAvatarsCount",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(height: 8.h),
                     GestureDetector(

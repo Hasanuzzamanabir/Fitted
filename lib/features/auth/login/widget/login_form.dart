@@ -124,7 +124,7 @@ class EmailForm extends StatelessWidget {
               },
               child: const Text(
                 "Forgot password?",
-                style: TextStyle(color: AppColors.subtext, fontSize: 13, fontWeight: FontWeight.w600),
+                style: TextStyle(color: AppColors.primecolor, fontSize: 13, fontWeight: FontWeight.w600),
               ),
             ),
           ],

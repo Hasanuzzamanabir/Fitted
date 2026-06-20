@@ -34,27 +34,10 @@ class _SettingViewState extends State<SettingView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20.h),
-             CustomSectionTitle(title: "Account"),
-             SizedBox(height: 12.h),
+             
               
             
-           Container(
-                decoration: BoxDecoration(
-                  color: AppColors.black3, // 0.1 * 255
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                child: Column(
-                  children: [
-                   
-                    ProfileMenuTile(icon: Icons.lock_outline, title: "Terms of service", onTap: () {
-                      // Navigator.pushNamed(context, '/editProfileView');
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfileView()));
-                    },trailing: CustomToggleSwitch(leftLabel: "Off", rightLabel: "On", isRightSelected: true, onToggle: (val) {}),),
-                    const Divider(color: Colors.white10, height: 1),
-                    ProfileMenuTile(icon: Icons.headset_mic_outlined, title: "Privacy policy", onTap: () {},trailing:Text("English(US)", style: TextStyle(color: Colors.white54, fontSize: 14.sp),) ,),
-                  ],
-                ),
-              ),
+       
               SizedBox(height: 40.h),
              CustomSectionTitle(title: "Account"),
              SizedBox(height: 12.h),

@@ -439,6 +439,7 @@ import 'package:fitted/core/theme/font_manager.dart';
 import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
+import 'package:fitted/features/bottom_nav_bar/view/bottom_nav_bar_view.dart';
 import 'package:fitted/features/explore/widgets/outfit_breakdown_item.dart';
 import 'package:fitted/features/explore/widgets/shop_look_card.dart';
 import 'package:fitted/features/plan_outfit_view/provider/outfit_recomandation_provider.dart';
@@ -457,10 +458,17 @@ class OutfitRecommendationView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.bgprime,
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Plan an Outfit",
         leadingImagePath: ImagePath.cross,
         actionImagePath: ImagePath.save,
+        onLeadingTap: () {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            BottomNavBarView.bottomNavBarView,
+            (route) => false,
+          );
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 80.h),

@@ -1,4 +1,3 @@
-// 
 import 'package:flutter/material.dart';
 
 class PreferenceProvider extends ChangeNotifier {
@@ -17,15 +16,49 @@ class PreferenceProvider extends ChangeNotifier {
   final List<String> _selectedVibes = [];
   List<String> get selectedVibes => _selectedVibes;
 
-  final List<Map<String, String>> _colorVibes = [
-    {"name": "Neutrals", "hex": "E5E0D8"},
-    {"name": "Earth", "hex": "3B2A24"},
-    {"name": "Mono C.", "hex": "2A2A2A"},
-    {"name": "Pastels", "hex": "F0E4E4"},
-    {"name": "Mono C.", "hex": "1B4D3E"},
-    {"name": "Brights", "hex": "E84C3D"},
+  final List<Map<String, dynamic>> _colorVibes = [
+    {
+      "name": "Neutrals",
+      "hexList": ["E5E0D8", "CDC3B4", "8B8275", "403A33"],
+      "subtitle": "#E5E0D8  #CDC3B4  #8B8275\n#403A33"
+    },
+    {
+      "name": "Earth",
+      "hexList": ["B07C56", "D9A066", "8C5835", "402816"],
+      "subtitle": "#B07C56  #D9A066  #8C5835\n#402816"
+    },
+    {
+      "name": "Mono Carbon",
+      "hexList": ["2A2A2A", "404040", "1B1B1B", "111111"],
+      "subtitle": "#2A2A2A  #404040  #1B1B1B\n#111111"
+    },
+    {
+      "name": "Pastels",
+      "hexList": ["F4EAE1", "E3EFF2", "E8E5F2", "F2E6ED"],
+      "subtitle": "#F4EAE1  #E3EFF2  #E8E5F2\n#F2E6ED"
+    },
+    {
+      "name": "Forest",
+      "hexList": ["1B4D3E", "2C6B56", "4F8F75", "A3C9A8"],
+      "subtitle": "#1B4D3E  #2C6B56  #4F8F75\n#A3C9A8"
+    },
+    {
+      "name": "Brights",
+      "hexList": ["E84C3D", "F1C40F", "9B59B6", "3498DB"],
+      "subtitle": "#E84C3D  #F1C40F  #9B59B6\n#3498DB"
+    },
+    {
+      "name": "Denim & Indigo",
+      "hexList": ["2C3E50", "34495E", "2980B9", "5DADE2"],
+      "subtitle": "#2C3E50  #34495E  #2980B9\n#5DADE2"
+    },
+    {
+      "name": "Noir & Gold",
+      "hexList": ["111111", "D4AF37", "222222", "AA7C11"],
+      "subtitle": "#111111  #D4AF37  #222222\n#AA7C11"
+    },
   ];
-  List<Map<String, String>> get colorVibes => _colorVibes;
+  List<Map<String, dynamic>> get colorVibes => _colorVibes;
 
   final List<String> _selectedColors = [];
   List<String> get selectedColors => _selectedColors;
@@ -51,8 +84,11 @@ class PreferenceProvider extends ChangeNotifier {
   }
 
   void setGender(String value) {
-    _gender = value;
-    notifyListeners();
+    if (_gender != value) {
+      _gender = value;
+      _selectedVibes.clear(); 
+      notifyListeners();
+    }
   }
 
   void setAgeZone(String value) {
@@ -83,14 +119,22 @@ class PreferenceProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addCustomColor(String hexCode) {
-    bool exists = _colorVibes.any((element) => element["hex"]!.toUpperCase() == hexCode.toUpperCase());
+  void addCustomColor(String combinedHexCodes) {
+    List<String> hexList = combinedHexCodes.split(",");
+    String mainHex = hexList[0];
+
+    bool exists = _colorVibes.any((element) {
+      final List<dynamic> list = element["hexList"];
+      return list.any((hex) => hex.toString().toUpperCase() == mainHex.toUpperCase());
+    });
+
     if (!exists) {
       _colorVibes.add({
-        "name": "Custom ${_colorVibes.length - 5}",
-        "hex": hexCode,
+        "name": "Custom ${_colorVibes.length - 7}",
+        "hexList": hexList,
+        "subtitle": hexList.map((h) => "#$h").join("  "),
       });
-      _selectedColors.add(hexCode);
+      _selectedColors.add(mainHex);
       notifyListeners();
     }
   }

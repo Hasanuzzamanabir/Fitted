@@ -19,7 +19,7 @@ class HomeTabButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
         decoration: BoxDecoration(
           color: themeColor.withOpacity(0.05),
           borderRadius: BorderRadius.circular(20.r),
