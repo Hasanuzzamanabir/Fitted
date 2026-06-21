@@ -168,7 +168,7 @@ class ShareLookBottomSheet extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 2.h),
-                      Text("Send via your apps", style: TextStyle(color: Colors.white30, fontSize: 10.sp)),
+                      Text("Send on your group", style: TextStyle(color: Colors.white30, fontSize: 10.sp)),
                     ],
                   ),
                 ),

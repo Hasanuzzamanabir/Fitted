@@ -51,7 +51,7 @@ class HomeView extends StatelessWidget {
             Divider(color: Colors.white, thickness: 1),
             Text(
               "Good morning,",
-              style: FontManager.playfairH3().copyWith(color: Colors.white60),
+              style: FontManager.playfairH3().copyWith(color: Colors.white),
             ),
             
             SizedBox(height: 4.h),
@@ -145,7 +145,7 @@ class HomeView extends StatelessWidget {
               children: [
                 Text(
                   "Today's pick for you",
-                  style: FontManager.dmSansH2().copyWith(color: Colors.white),
+                  style: FontManager.playfairH6().copyWith(color: Colors.white),
                 ),
                 Row(
                   children: [

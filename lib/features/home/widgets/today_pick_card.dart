@@ -64,7 +64,7 @@ class TodayPickCard extends StatelessWidget {
                       SizedBox(height: 4.h),
                       Row(
                         children: [
-                          Icon(Icons.star, color: Colors.amber, size: 16.sp),
+                          Icon(Icons.star, color: Colors.red, size: 16.sp),
                           SizedBox(width: 4.w),
                           Text(
                             "$vibeMatch vibe match",

@@ -23,6 +23,13 @@ import 'package:fitted/features/profile_section/profile/view/edit_profile.dart';
 import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
 import 'package:fitted/features/profile_section/setting/view/setting_view.dart';
 import 'package:fitted/features/profile_section/manage_subscription/view/Manage_subscription_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/create_new_group_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/group_details_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/group_settings.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/join_group_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/member_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/my_fits_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/sharing_group_view.dart';
 import 'package:fitted/features/profile_section/support_and_priveacy/view/help_and_support.dart';
 import 'package:fitted/features/profile_section/support_and_priveacy/view/security.dart';
 import 'package:fitted/features/splash/view/splash_screen.dart';
@@ -71,6 +78,13 @@ class AppRoute {
     OutfitRecommendationView.outfitRecommendationView: (context) => const OutfitRecommendationView(),
     EventDetailsView.eventDetailsView: (context) => const EventDetailsView(isLookGenerated: false),
     ExploreView.exploreView: (context) => const ExploreView(),
+    SharingGroupsView.sharingGroupsView: (context) => const SharingGroupsView(),
+    CreateGroupView.createGroupView: (context) => const CreateGroupView(),
+    JoinGroupView.joinGroupView: (context) => const JoinGroupView(),
+    GroupDetailsView.groupDetailsView: (context) => const GroupDetailsView(),
+    GroupSettingsView.groupSettingsView: (context) => const GroupSettingsView(),
+    MembersView.membersView: (context) => const MembersView(),
+    MyFitsView.myFitsView: (context) => const MyFitsView(),
   };
 
  

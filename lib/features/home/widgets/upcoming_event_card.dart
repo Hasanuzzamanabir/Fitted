@@ -60,11 +60,11 @@ class UpcomingEventCard extends StatelessWidget {
               children: [
                 Text(
                   "UPCOMING",
-                  style: FontManager.dmSansH3().copyWith(color: Colors.white30, fontSize: 10.sp),
+                  style: FontManager.dmSansH3().copyWith(color: Colors.red, fontSize: 10.sp),
                 ),
                 Text(
                   title,
-                  style: FontManager.dmSansH2().copyWith(color: Colors.white, fontSize: 16.sp),
+                  style: FontManager.playfairH3().copyWith(color: Colors.white, fontSize: 16.sp),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

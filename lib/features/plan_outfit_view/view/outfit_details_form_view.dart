@@ -39,7 +39,7 @@ class _OutfitDetailsFormViewState extends State<OutfitDetailsFormView> {
       appBar: const CustomAppBar(
         title: "Plan an Outfit",
             leadingImagePath: ImagePath.cross,
-        actionImagePath: ImagePath.save,
+        //actionImagePath: ImagePath.save,
       ),
       body: SafeArea(
         child: Column(

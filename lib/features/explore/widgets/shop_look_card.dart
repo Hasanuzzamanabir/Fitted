@@ -57,7 +57,7 @@ class ShopLookCard extends StatelessWidget {
                 SizedBox(height: 2.h),
                 Text(
                   title,
-                  style: FontManager.dmSansH3().copyWith(
+                  style: FontManager.playfairH3().copyWith(
                     color: Colors.white,
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w500,
@@ -71,7 +71,7 @@ class ShopLookCard extends StatelessWidget {
                   children: [
                     Text(
                       price,
-                      style: FontManager.dmSansH3().copyWith(
+                      style: FontManager.playfairH3().copyWith(
                         color: Colors.white70,
                         fontSize: 13.sp,
                         fontWeight: FontWeight.bold,

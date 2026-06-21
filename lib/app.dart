@@ -7,6 +7,7 @@ import 'package:fitted/features/plan_outfit_view/provider/outfit_recomandation_p
 import 'package:fitted/features/preference/provider/preference_provider.dart';
 import 'package:fitted/features/preference/view/preference_flow_view.dart';
 import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/provider/group_provider.dart';
 import 'package:fitted/features/subscription/provider/subscription_provider.dart';
 import 'package:fitted/features/subscription/view/subscription_view.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +80,7 @@ class _FittedState extends State<Fitted> {
             ChangeNotifierProvider(create: (_) => BottomNavBarProvider()),
             ChangeNotifierProvider(create: (_) => SubscriptionProvider()),
             ChangeNotifierProvider(create: (_) => OutfitRecommendationProvider()),
+            ChangeNotifierProvider(create: (_) => GroupProvider()),
           ],
           child: MaterialApp(
             title: 'Fitted',

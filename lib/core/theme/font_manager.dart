@@ -54,6 +54,13 @@ static TextStyle dmSansH5() => TextStyle(
   fontWeight: w500,
   height: 1.1,
 );
+static TextStyle dmSansH6() => TextStyle(
+  color: AppColors.textprimary,
+  fontFamily: dmSans,
+  fontSize: 24.sp,
+  fontWeight: w400,
+  height: 1.1,
+);
 
 
 
@@ -95,6 +102,13 @@ static TextStyle playfairH5() => TextStyle(
   fontFamily: playfairDisplay,
   fontSize: 20.sp,
   fontWeight: w500,
+  height: 1.1,
+);
+static TextStyle playfairH6() => TextStyle(
+  color: AppColors.textprimary,
+  fontFamily: playfairDisplay,
+  fontSize: 24.sp,
+  fontWeight: w400,
   height: 1.1,
 );
 

@@ -11,6 +11,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? actionImagePath;
   final VoidCallback? onActionTap;
   final bool showLeading;
+  final Color? backgroundColor;
+  final Widget? trailingWidget;
 
   const CustomAppBar({
     super.key,
@@ -20,19 +22,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actionImagePath,
     this.onActionTap,
     this.showLeading = true,
+    this.backgroundColor,
+    this.trailingWidget,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.bgprime,
+      backgroundColor: backgroundColor ?? AppColors.bgprime,
       elevation: 0,
       automaticallyImplyLeading: false,
       titleSpacing: 24.w,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          showLeading && leadingImagePath != null
+          showLeading && leadingImagePath != null && leadingImagePath!.isNotEmpty
               ? GestureDetector(
                   onTap: onLeadingTap ?? () => Navigator.pop(context),
                   child: SizedBox(
@@ -51,18 +55,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               style: FontManager.playfairH5().copyWith(color: Colors.white),
             ),
           ),
-          actionImagePath != null
-              ? GestureDetector(
-                  onTap: onActionTap,
-                  child: SizedBox(
-                    width: 40.w,
-                    height: 40.h,
-                    child: actionImagePath!.endsWith('.svg')
-                        ? SvgPicture.asset(actionImagePath!, fit: BoxFit.scaleDown)
-                        : Image.asset(actionImagePath!, fit: BoxFit.scaleDown),
-                  ),
-                )
-              : SizedBox(width: 40.w),
+          trailingWidget ??
+              (actionImagePath != null && actionImagePath!.isNotEmpty
+                  ? GestureDetector(
+                      onTap: onActionTap,
+                      child: SizedBox(
+                        width: 40.w,
+                        height: 40.h,
+                        child: actionImagePath!.endsWith('.svg')
+                            ? SvgPicture.asset(actionImagePath!, fit: BoxFit.scaleDown)
+                            : Image.asset(actionImagePath!, fit: BoxFit.scaleDown),
+                      ),
+                    )
+                  : SizedBox(width: 40.w)),
         ],
       ),
     );

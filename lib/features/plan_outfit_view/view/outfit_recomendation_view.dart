@@ -696,16 +696,16 @@ class OutfitRecommendationView extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 14.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.r),
-              border: Border.all(color: Colors.white24),
+              border: Border.all(color: Colors.red),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.check_circle_outline, color: Colors.white, size: 18.sp),
+                Icon(Icons.check_circle_outline, color: Colors.redAccent, size: 14.sp),
                 SizedBox(width: 8.w),
                 Text(
                   "Wear today",
-                  style: FontManager.dmSansH3().copyWith(color: Colors.white, fontWeight: FontWeight.w600),
+                  style: FontManager.dmSansH3().copyWith(color: Colors.red, fontSize: 12.sp, fontWeight: FontWeight.w600),
                 ),
               ],
             ),

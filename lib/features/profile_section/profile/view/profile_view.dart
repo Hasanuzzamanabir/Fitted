@@ -9,6 +9,7 @@ import 'package:fitted/features/profile_section/profile/view/edit_profile.dart';
 import 'package:fitted/features/profile_section/profile/widgets/profile_menu_tile.dart';
 import 'package:fitted/features/profile_section/profile/widgets/profile_state_card.dart';
 import 'package:fitted/features/profile_section/manage_subscription/view/Manage_subscription_view.dart';
+import 'package:fitted/features/profile_section/sharing_groups/view/sharing_group_view.dart';
 import 'package:fitted/features/profile_section/support_and_priveacy/view/help_and_support.dart';
 import 'package:fitted/features/profile_section/support_and_priveacy/view/security.dart';
 import 'package:flutter/material.dart';
@@ -109,12 +110,12 @@ class ProfileView extends StatelessWidget {
                     ),
                     const Divider(color: Colors.white10, height: 1),
                     ProfileMenuTile(
-                      icon: Icons.accessibility_new_outlined,
+                      icon: Icons.people_outline,
                       title: "Outfit sharing groups",
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const EditStylePreferencesView()),
+                          MaterialPageRoute(builder: (context) => const SharingGroupsView()),
                         );
                       },
                     ),
