@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-
 class EditStylePreferencesView extends StatefulWidget {
   const EditStylePreferencesView({super.key});
   static const String editstylepreference = '/editStylePreferencesView';
@@ -23,15 +22,15 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
   @override
   void initState() {
     super.initState();
- 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<PreferenceProvider>(context, listen: false).initializeData(
         gender: "Female",
-        ageZone: "18 - 24",
+        ageZone: "18-24",
         selectedVibes: ["Streetwear"],
-        selectedColors: ["2A2A2A"],
+        selectedColors: ["Neutrals"], 
         preferredFit: "Regular",
-        priceRange: 0.6, isDressingKids: false,
+        priceRange: 555.0 / 1000.0, 
+        isDressingKids: false,
       );
     });
   }
@@ -48,14 +47,14 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
       {"title": "Maximalist", "subtitle": "Color, print, statement", "image": "https://picsum.photos/200/303"},
     ];
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.bgprime,
-        appBar: const CustomAppBar(
-          title: 'Edit style preferences',
-          leadingImagePath: ImagePath.cross,
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: AppColors.bgprime,
+      appBar: const CustomAppBar(
+        title: 'Edit style preferences',
+        leadingImagePath: ImagePath.cross,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +68,7 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                 ),
               ),
               SizedBox(height: 28.h),
-      
+
               Text("Your gender", style: TextStyle(color: AppColors.primecolor, fontSize: 16.sp, fontWeight: FontWeight.w600)),
               SizedBox(height: 12.h),
               DropdownButtonFormField<String>(
@@ -89,13 +88,13 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                 ),
               ),
               SizedBox(height: 24.h),
-      
+
               Text("Your age zone", style: TextStyle(color: AppColors.primecolor, fontSize: 16.sp, fontWeight: FontWeight.w600)),
               SizedBox(height: 12.h),
               DropdownButtonFormField<String>(
                 dropdownColor: const Color(0xFF1B1720),
                 value: provider.ageZone,
-                items: ["18 - 24", "25 - 34", "35 - 44", "45+"].map((String value) {
+                items: ["18-24", "25-34", "35-44", "45+"].map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value, style: const TextStyle(color: Colors.white)),
@@ -109,8 +108,16 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                 ),
               ),
               SizedBox(height: 24.h),
-      
+
               Text("Your vibe", style: TextStyle(color: AppColors.primecolor, fontSize: 16.sp, fontWeight: FontWeight.w600)),
+              SizedBox(height: 16.h),
+              Row(
+                children: [
+                  _buildVibeFilterButton("Women", true),
+                  SizedBox(width: 8.w),
+                  _buildVibeFilterButton("Men", false),
+                ],
+              ),
               SizedBox(height: 16.h),
               GridView.builder(
                 shrinkWrap: true,
@@ -119,7 +126,7 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 16.w,
                   mainAxisSpacing: 16.h,
-                  childAspectRatio: 0.85,
+                  childAspectRatio: 0.82,
                 ),
                 itemCount: vibes.length,
                 itemBuilder: (context, index) {
@@ -135,53 +142,76 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                 },
               ),
               SizedBox(height: 28.h),
-      
+
               Text("Your colour palette", style: TextStyle(color: AppColors.primecolor, fontSize: 16.sp, fontWeight: FontWeight.w600)),
               SizedBox(height: 16.h),
-              GridView.builder(
+              ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16.w,
-                  mainAxisSpacing: 16.h,
-                  childAspectRatio: 1.2,
-                ),
                 itemCount: colorsList.length + 1,
                 itemBuilder: (context, index) {
                   if (index < colorsList.length) {
                     final colorItem = colorsList[index];
-                    bool isSelected = provider.selectedColors.contains(colorItem["hex"]);
-                    Color cardColor = Color(int.parse("0xFF${colorItem["hex"]}"));
-                    Color textColor = ThemeData.estimateBrightnessForColor(cardColor) == Brightness.light ? Colors.black : Colors.white;
-      
+                    final String paletteName = colorItem["name"];
+                    final List<String> hexList = List<String>.from(colorItem["hexList"]);
+                    bool isSelected = provider.selectedColors.contains(paletteName);
+
                     return GestureDetector(
-                      onTap: () => provider.toggleColor(colorItem["hex"]!),
+                      onTap: () => provider.toggleColor(paletteName),
                       child: Container(
-                        decoration: BoxDecoration(
-                          color: cardColor,
-                          borderRadius: BorderRadius.circular(16.r),
-                          border: isSelected ? Border.all(color: Colors.white, width: 3.w) : null,
-                        ),
+                        margin: EdgeInsets.only(bottom: 12.h),
                         padding: EdgeInsets.all(12.w),
-                        child: Stack(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF0D0B0E),
+                          borderRadius: BorderRadius.circular(16.r),
+                          border: Border.all(
+                            color: isSelected ? AppColors.primecolor.withOpacity(0.3) : Colors.white.withOpacity(0.03),
+                            width: 1,
+                          ),
+                        ),
+                        child: Row(
                           children: [
-                            Align(
-                              alignment: Alignment.bottomLeft,
+                            Container(
+                              width: 48.w,
+                              height: 48.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                              clipBehavior: Clip.antiAlias,
+                              child: Row(
+                                children: hexList.map((hex) {
+                                  return Expanded(
+                                    child: Container(
+                                      color: Color(int.parse("0xFF$hex")),
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                            SizedBox(width: 16.w),
+                            Expanded(
                               child: Column(
-                                mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(colorItem["name"]!, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 14.sp)),
-                                  Text("#${colorItem["hex"]}", style: TextStyle(color: textColor.withOpacity(0.6), fontSize: 11.sp)),
+                                  Text(
+                                    paletteName,
+                                    style: TextStyle(color: Colors.white, fontSize: 15.sp, fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(height: 4.h),
+                                  Text(
+                                    hexList.map((h) => "#$h").join("  "),
+                                    style: TextStyle(color: Colors.white38, fontSize: 10.sp, letterSpacing: 0.5),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ],
                               ),
                             ),
-                            if (isSelected)
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: Icon(Icons.check_circle, color: textColor == Colors.black ? Colors.black87 : Colors.white, size: 20.sp),
-                              )
+                            Icon(
+                              isSelected ? Icons.check_circle : Icons.radio_button_off,
+                              color: isSelected ? AppColors.primecolor : Colors.white24,
+                              size: 22.sp,
+                            ),
                           ],
                         ),
                       ),
@@ -199,19 +229,43 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                         );
                       },
                       child: Container(
+                        padding: EdgeInsets.all(14.w),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1B1720),
+                          color: const Color(0xFF0D0B0E),
                           borderRadius: BorderRadius.circular(16.r),
-                          border: Border.all(color: Colors.white10, width: 1),
+                          border: Border.all(color: Colors.white.withOpacity(0.03), width: 1),
                         ),
-                        child: Icon(Icons.add_circle_outline, color: AppColors.primecolor, size: 28.sp),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 48.w,
+                              height: 48.h,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF1B1720),
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                              child: Icon(Icons.add, color: AppColors.primecolor, size: 20.sp),
+                            ),
+                            SizedBox(width: 16.w),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Build your own", style: TextStyle(color: Colors.white, fontSize: 15.sp, fontWeight: FontWeight.w600)),
+                                SizedBox(height: 4.h),
+                                Text("Pick up to 4 custom shades", style: TextStyle(color: Colors.white38, fontSize: 11.sp)),
+                              ],
+                            ),
+                            const Spacer(),
+                            Icon(Icons.radio_button_off, color: Colors.white24, size: 22.sp),
+                          ],
+                        ),
                       ),
                     );
                   }
                 },
               ),
               SizedBox(height: 28.h),
-      
+
               Text("Preferred fit", style: TextStyle(color: AppColors.primecolor, fontSize: 16.sp, fontWeight: FontWeight.w600)),
               SizedBox(height: 12.h),
               Row(
@@ -224,33 +278,57 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                         margin: EdgeInsets.symmetric(horizontal: 4.w),
                         padding: EdgeInsets.symmetric(vertical: 12.h),
                         decoration: BoxDecoration(
-                          color: isSelected ? AppColors.primecolor : const Color(0xFF1B1720),
+                          color: const Color(0xFF1B1720),
                           borderRadius: BorderRadius.circular(12.r),
-                          border: isSelected ? Border.all(color: Colors.white24) : null,
+                          border: Border.all(
+                            color: isSelected ? AppColors.primecolor : Colors.transparent,
+                            width: 1.5,
+                          ),
                         ),
                         alignment: Alignment.center,
-                        child: Text(fit, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(fit, style: TextStyle(color: isSelected ? AppColors.primecolor : Colors.white, fontWeight: FontWeight.w500, fontSize: 13.sp)),
+                            if (isSelected) ...[
+                              SizedBox(width: 4.w),
+                              Icon(Icons.check_circle, color: AppColors.primecolor, size: 12.sp),
+                            ]
+                          ],
+                        ),
                       ),
                     ),
                   );
                 }).toList(),
               ),
               SizedBox(height: 28.h),
-      
+
               Text("Your budget range", style: TextStyle(color: AppColors.primecolor, fontSize: 16.sp, fontWeight: FontWeight.w600)),
               SizedBox(height: 16.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Price Range", style: TextStyle(color: Colors.white70, fontSize: 14.sp)),
-                  Text("\$\$\$", style: TextStyle(color: AppColors.primecolor, fontSize: 14.sp, fontWeight: FontWeight.bold)),
+                  Text(
+                    "${(provider.priceRange * 1000).toInt()}",
+                    style: TextStyle(color: Colors.white, fontSize: 14.sp, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
-              Slider(
-                value: provider.priceRange,
-                activeColor: AppColors.primecolor,
-                inactiveColor: Colors.white12,
-                onChanged: (val) => provider.setPriceRange(val),
+              SizedBox(height: 8.h),
+              SliderTheme(
+                data: SliderTheme.of(context).copyWith(
+                  trackHeight: 3.h,
+                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8.r),
+                  overlayShape: RoundSliderOverlayShape(overlayRadius: 16.r),
+                ),
+                child: Slider(
+                  value: provider.priceRange,
+                  activeColor: AppColors.primecolor,
+                  inactiveColor: Colors.white,
+                  thumbColor: AppColors.primecolor,
+                  onChanged: (val) => provider.setPriceRange(val),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -260,7 +338,7 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
                 ],
               ),
               SizedBox(height: 40.h),
-      
+
               CustomButtonWidget(
                 title: "Save changes",
                 onTap: () {
@@ -271,6 +349,20 @@ class _EditStylePreferencesViewState extends State<EditStylePreferencesView> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildVibeFilterButton(String text, bool isActive) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+      decoration: BoxDecoration(
+        color: isActive ? AppColors.primecolor : const Color(0xFF1B1720),
+        borderRadius: BorderRadius.circular(20.r),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(color: isActive ? Colors.white : Colors.white38, fontSize: 13.sp, fontWeight: FontWeight.w500),
       ),
     );
   }

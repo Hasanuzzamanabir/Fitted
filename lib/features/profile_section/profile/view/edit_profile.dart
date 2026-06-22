@@ -4,14 +4,18 @@ import 'package:fitted/core/widgets/custom_text_field.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart'; 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import '../provider/edit_profile_provider.dart'; // আপনার সঠিক পাথ দিন
 
 class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});
   static const String editProfileView = '/editProfileView';
- 
 
   @override
   Widget build(BuildContext context) {
+    final profileProvider = Provider.of<EditProfileProvider>(context);
+
     return Scaffold(
       backgroundColor: const Color(0xFF120E16),
       appBar: const CustomAppBar(
@@ -28,25 +32,35 @@ class EditProfileView extends StatelessWidget {
             Center(
               child: Stack(
                 children: [
-                  CircleAvatar(
-                    radius: 60.r,
- backgroundImage: const NetworkImage(
-                        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop',
-                      ),                  ),
+                  GestureDetector(
+                    onTap: () => _showImageSourceBottomSheet(context, profileProvider),
+                    child: CircleAvatar(
+                      radius: 60.r,
+                      backgroundColor: Colors.grey.shade900,
+                      backgroundImage: profileProvider.imageFile != null
+                          ? FileImage(profileProvider.imageFile!) as ImageProvider
+                          : const NetworkImage(
+                              'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop',
+                            ),
+                    ),
+                  ),
                   Positioned(
                     bottom: 0,
                     right: 4.w,
-                    child: Container(
-                      width: 32.w,
-                      height: 32.h,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFFF4B6B),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.camera_alt_outlined,
-                        color: Colors.white,
-                        size: 16.sp,
+                    child: GestureDetector(
+                      onTap: () => _showImageSourceBottomSheet(context, profileProvider),
+                      child: Container(
+                        width: 32.w,
+                        height: 32.h,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFFF4B6B),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.camera_alt_outlined,
+                          color: Colors.white,
+                          size: 16.sp,
+                        ),
                       ),
                     ),
                   ),
@@ -145,6 +159,76 @@ class EditProfileView extends StatelessWidget {
             SizedBox(height: 24.h),
           ],
         ),
+      ),
+    );
+  }
+
+  void _showImageSourceBottomSheet(BuildContext context, EditProfileProvider provider) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: const Color(0xFF1B1720),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Select Profile Picture",
+                style: TextStyle(color: Colors.white, fontSize: 16.sp, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 24.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildSourceTile(
+                    context,
+                    icon: Icons.photo_library_outlined,
+                    label: "Gallery",
+                    onTap: () {
+                      Navigator.pop(context);
+                      provider.pickImage(ImageSource.gallery);
+                    },
+                  ),
+                  _buildSourceTile(
+                    context,
+                    icon: Icons.camera_alt_outlined,
+                    label: "Camera",
+                    onTap: () {
+                      Navigator.pop(context);
+                      provider.pickImage(ImageSource.camera);
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(height: 12.h),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSourceTile(BuildContext context, {required IconData icon, required String label, required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(16.r),
+            decoration: BoxDecoration(
+              color: const Color(0xFF120E16),
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white.withOpacity(0.05)),
+            ),
+            child: Icon(icon, color: const Color(0xFFFF4B6B), size: 24.sp),
+          ),
+          SizedBox(height: 8.h),
+          Text(label, style: TextStyle(color: Colors.white, fontSize: 13.sp)),
+        ],
       ),
     );
   }

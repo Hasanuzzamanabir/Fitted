@@ -84,7 +84,7 @@ class SignUpEmailForm extends StatelessWidget {
         const Center(
           child: Text(
             "Or Continue with", 
-            style: TextStyle(color: AppColors.subtext, fontSize: 13),
+            style: TextStyle(color: AppColors.black2, fontSize: 13),
           ),
         ),
         SizedBox(height: 15.h),

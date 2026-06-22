@@ -403,7 +403,7 @@ class SignUpEmailOtp extends StatelessWidget {
                           builder: (context) => CustomSuccessScreen(
                             title: "Verification Successful!",
                             subtitle: "Your email has been successfully verified.",
-                            buttonTitle: "Continue to Plans",
+                            buttonTitle: "Continue",
                             onButtonTap: () {
                               Navigator.pushNamedAndRemoveUntil(
                                 context,

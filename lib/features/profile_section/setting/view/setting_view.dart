@@ -33,9 +33,26 @@ class _SettingViewState extends State<SettingView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20.h),
+        
              
+                 SizedBox(height: 40.h),
+             CustomSectionTitle(title: "Account"),
+             SizedBox(height: 12.h),
               
+            
+           Container(
+                decoration: BoxDecoration(
+                  color: AppColors.black3, // 0.1 * 255
+                  borderRadius: BorderRadius.circular(16.r),
+                ),
+                child: Column(
+                  children: [
+                   
+                    ProfileMenuTile( title: "Language",trailing: Text("English(US)"), onTap: () {}),
+                 
+                  ],
+                ),
+              ), 
             
        
               SizedBox(height: 40.h),
@@ -51,9 +68,9 @@ class _SettingViewState extends State<SettingView> {
                 child: Column(
                   children: [
                    
-                    ProfileMenuTile(icon: Icons.lock_outline, title: "Terms of service", onTap: () {}),
+                    ProfileMenuTile( title: "Terms of service", onTap: () {}),
                     const Divider(color: Colors.white10, height: 1),
-                    ProfileMenuTile(icon: Icons.headset_mic_outlined, title: "Privacy policy", onTap: () {}),
+                    ProfileMenuTile( title: "Privacy policy", onTap: () {}),
                   ],
                 ),
               ),

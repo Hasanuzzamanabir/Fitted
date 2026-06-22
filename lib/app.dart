@@ -1,11 +1,10 @@
-
-
 import 'package:fitted/features/auth/login/provider/login_tab_provider.dart';
 import 'package:fitted/features/auth/signup/provider/sign_up_tab_provider.dart';
 import 'package:fitted/features/bottom_nav_bar/provider/bottom_nav_bar_provider.dart';
 import 'package:fitted/features/plan_outfit_view/provider/outfit_recomandation_provider.dart';
 import 'package:fitted/features/preference/provider/preference_provider.dart';
 import 'package:fitted/features/preference/view/preference_flow_view.dart';
+import 'package:fitted/features/profile_section/profile/provider/edit_profile_provider.dart';
 import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
 import 'package:fitted/features/profile_section/sharing_groups/provider/group_provider.dart';
 import 'package:fitted/features/subscription/provider/subscription_provider.dart';
@@ -81,6 +80,7 @@ class _FittedState extends State<Fitted> {
             ChangeNotifierProvider(create: (_) => SubscriptionProvider()),
             ChangeNotifierProvider(create: (_) => OutfitRecommendationProvider()),
             ChangeNotifierProvider(create: (_) => GroupProvider()),
+            ChangeNotifierProvider(create: (_) => EditProfileProvider()),
           ],
           child: MaterialApp(
             title: 'Fitted',
