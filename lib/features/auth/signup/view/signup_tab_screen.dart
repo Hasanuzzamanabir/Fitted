@@ -56,7 +56,7 @@ class SignUpTabScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Fitted.", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Serif')),
+                    Text("jaxen.", style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'Serif')),
                     SizedBox(height: 5),
                     Text("Let's Get Styled", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
                     SizedBox(height: 4),

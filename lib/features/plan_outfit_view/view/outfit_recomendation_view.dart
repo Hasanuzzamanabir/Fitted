@@ -7,6 +7,7 @@ import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
 import 'package:fitted/features/bottom_nav_bar/view/bottom_nav_bar_view.dart';
 import 'package:fitted/features/explore/widgets/outfit_breakdown_item.dart';
+import 'package:fitted/features/explore/widgets/share_look_bottom_sheet.dart';
 import 'package:fitted/features/explore/widgets/shop_look_card.dart';
 import 'package:fitted/features/plan_outfit_view/provider/outfit_recomandation_provider.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,9 @@ class OutfitRecommendationView extends StatelessWidget {
         title: "Plan an Outfit",
         leadingImagePath: ImagePath.cross,
         actionImagePath: ImagePath.save,
+        onActionTap: () {
+          ShareLookBottomSheet.show(context);
+        },
         onLeadingTap: () {
           Navigator.pushNamedAndRemoveUntil(
             context,
@@ -262,16 +266,16 @@ class OutfitRecommendationView extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 14.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.r),
-              border: Border.all(color: Colors.red),
+              border: Border.all(color: AppColors.primecolor),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.check_circle_outline, color: Colors.redAccent, size: 14.sp),
+                Icon(Icons.check_circle_outline, color: AppColors.primecolor, size: 14.sp),
                 SizedBox(width: 8.w),
                 Text(
                   "Wear today",
-                  style: FontManager.dmSansH3().copyWith(color: Colors.red, fontSize: 12.sp, fontWeight: FontWeight.w600),
+                  style: FontManager.dmSansH3().copyWith(color: AppColors.primecolor, fontSize: 12.sp, fontWeight: FontWeight.w600),
                 ),
               ],
             ),
@@ -284,7 +288,7 @@ class OutfitRecommendationView extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 14.h),
               decoration: BoxDecoration(
-                color: const Color(0xFFFF4B6B),
+                color: AppColors.primecolor,
                 borderRadius: BorderRadius.circular(24.r),
               ),
               child: Row(

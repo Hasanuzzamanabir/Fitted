@@ -7,6 +7,7 @@ import 'package:fitted/features/preference/view/preference_flow_view.dart';
 import 'package:fitted/features/profile_section/profile/provider/edit_profile_provider.dart';
 import 'package:fitted/features/profile_section/profile/view/profile_view.dart';
 import 'package:fitted/features/profile_section/sharing_groups/provider/group_provider.dart';
+import 'package:fitted/features/profile_section/support_and_priveacy/provider/security_provider.dart';
 import 'package:fitted/features/subscription/provider/subscription_provider.dart';
 import 'package:fitted/features/subscription/view/subscription_view.dart';
 import 'package:flutter/material.dart';
@@ -43,14 +44,14 @@ class RouteLoggerObserver extends NavigatorObserver {
   }
 }
 
-class Fitted extends StatefulWidget {
-  const Fitted({super.key});
+class jaxen extends StatefulWidget {
+  const jaxen({super.key});
 
   @override
-  State<Fitted> createState() => _FittedState();
+  State<jaxen> createState() => _jaxenState();
 }
 
-class _FittedState extends State<Fitted> {
+class _jaxenState extends State<jaxen> {
   @override
   void initState() {
     super.initState();
@@ -81,9 +82,10 @@ class _FittedState extends State<Fitted> {
             ChangeNotifierProvider(create: (_) => OutfitRecommendationProvider()),
             ChangeNotifierProvider(create: (_) => GroupProvider()),
             ChangeNotifierProvider(create: (_) => EditProfileProvider()),
+            ChangeNotifierProvider(create: (_) => SecurityProvider()),
           ],
           child: MaterialApp(
-            title: 'Fitted',
+            title: 'jaxen',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: Colors.blue,

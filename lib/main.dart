@@ -20,5 +20,5 @@ void main() {
     ),
   );
 
-  runApp(const Fitted());
+  runApp(const jaxen());
 }

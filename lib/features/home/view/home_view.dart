@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
         automaticallyImplyLeading: false,
         titleSpacing: 16.w,
         title: Text(
-          'Fitted.',
+          'jaxen.',
           style: FontManager.playfairH2().copyWith(
             color: Colors.white,
             fontSize: 28.sp,

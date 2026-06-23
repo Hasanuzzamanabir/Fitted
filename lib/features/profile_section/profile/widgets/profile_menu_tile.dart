@@ -46,7 +46,7 @@ class ProfileMenuTile extends StatelessWidget {
                 padding: EdgeInsets.only(top: 2.h),
                 child: Text(
                   subtitle!,
-                  style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                  style: TextStyle(color: Colors.white, fontSize: 14.sp),
                 ),
               )
             : null,

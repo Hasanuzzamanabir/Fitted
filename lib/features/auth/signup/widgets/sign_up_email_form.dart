@@ -6,12 +6,16 @@ import 'package:fitted/core/widgets/custom_text_field.dart';
 import 'package:fitted/features/auth/signup/view/sign_up_email_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../provider/sign_up_tab_provider.dart';
 
 class SignUpEmailForm extends StatelessWidget {
   const SignUpEmailForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<SignUpTabProvider>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -68,10 +72,20 @@ class SignUpEmailForm extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
         ),
         SizedBox(height: 8.h),
-        const CustomTextField(
+        CustomTextField(
           hint: "• • • • • • • •", 
           prefixIcon: Icons.lock_outline, 
-          isPassword: true,
+          isPassword: authProvider.isPasswordHidden,
+          suffixIcon: IconButton(
+            onPressed: () => authProvider.togglePasswordVisibility(),
+            icon: Icon(
+              authProvider.isPasswordHidden 
+                  ? Icons.visibility_off_outlined 
+                  : Icons.visibility_outlined,
+              color: Colors.grey.shade400,
+              size: 20,
+            ),
+          ),
         ),
         SizedBox(height: 24.h),
         CustomButtonWidget(

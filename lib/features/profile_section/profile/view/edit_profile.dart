@@ -93,6 +93,9 @@ class EditProfileView extends StatelessWidget {
                         child: const CustomTextField(
                           hint: "First name",
                           prefixIcon: Icons.person_outline,
+                          fillColor: Colors.white10,
+                          hintColor: Colors.white30,
+                          iconColor: Colors.white30,
                         ),
                       ),
                     ],
@@ -122,6 +125,9 @@ class EditProfileView extends StatelessWidget {
                         child: const CustomTextField(
                           hint: "Last name",
                           prefixIcon: Icons.person_outline,
+                          fillColor: Colors.white10,
+                          hintColor: Colors.white30,
+                          iconColor: Colors.white30,
                         ),
                       ),
                     ],
@@ -149,6 +155,9 @@ class EditProfileView extends StatelessWidget {
               child: const CustomTextField(
                 hint: "Enter email",
                 prefixIcon: Icons.mail_outline,
+                fillColor: Colors.white10,
+                hintColor: Colors.white30,
+                iconColor: Colors.white30,
               ),
             ),
             SizedBox(height: 40.h),

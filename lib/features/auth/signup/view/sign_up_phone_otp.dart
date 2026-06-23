@@ -278,7 +278,7 @@ class SignUpPhoneOtp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "Fitted.", 
+                      "jaxen.", 
                       style: TextStyle(
                         color: Colors.white, 
                         fontSize: 32.sp, 

@@ -3,8 +3,10 @@ import 'package:fitted/core/utils/image_path.dart';
 import 'package:fitted/core/widgets/custom_app_bar.dart';
 import 'package:fitted/core/widgets/custom_button_widgets.dart';
 import 'package:fitted/core/widgets/custom_text_field.dart';
+import 'package:fitted/features/profile_section/support_and_priveacy/provider/security_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class SecuritySettingsView extends StatelessWidget {
   const SecuritySettingsView({super.key});
@@ -12,11 +14,12 @@ class SecuritySettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final securityProvider = Provider.of<SecurityProvider>(context);
+
     return Scaffold(
       backgroundColor: AppColors.bgprime,
       appBar: const CustomAppBar(
         title: 'Security',
-        
         leadingImagePath: ImagePath.cross,
       ),
       body: SingleChildScrollView(
@@ -34,17 +37,22 @@ class SecuritySettingsView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.h),
-            Theme(
-              data: Theme.of(context).copyWith(
-                inputDecorationTheme: InputDecorationTheme(
-                  fillColor: const Color(0xFF1B1720),
-                  hintStyle: TextStyle(color: Colors.white30, fontSize: 14.sp),
+            CustomTextField(
+              hint: "*********",
+              prefixIcon: Icons.lock_outline,
+              isPassword: securityProvider.isCurrentPasswordHidden,
+              fillColor: const Color(0xFF1B1720),
+              hintColor: Colors.white30,
+              iconColor: Colors.grey.shade400,
+              suffixIcon: IconButton(
+                onPressed: () => securityProvider.toggleCurrentPassword(),
+                icon: Icon(
+                  securityProvider.isCurrentPasswordHidden 
+                      ? Icons.visibility_off_outlined 
+                      : Icons.visibility_outlined,
+                  color: Colors.grey.shade400,
+                  size: 20,
                 ),
-              ),
-              child: const CustomTextField(
-                hint: "*********",
-                prefixIcon: Icons.lock_outline,
-                isPassword: true,
               ),
             ),
             SizedBox(height: 20.h),
@@ -57,17 +65,22 @@ class SecuritySettingsView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.h),
-            Theme(
-              data: Theme.of(context).copyWith(
-                inputDecorationTheme: InputDecorationTheme(
-                  fillColor: const Color(0xFF1B1720),
-                  hintStyle: TextStyle(color: Colors.white30, fontSize: 14.sp),
+            CustomTextField(
+              hint: "*********",
+              prefixIcon: Icons.lock_outline,
+              isPassword: securityProvider.isNewPasswordHidden,
+              fillColor: const Color(0xFF1B1720),
+              hintColor: Colors.white30,
+              iconColor: Colors.grey.shade400,
+              suffixIcon: IconButton(
+                onPressed: () => securityProvider.toggleNewPassword(),
+                icon: Icon(
+                  securityProvider.isNewPasswordHidden 
+                      ? Icons.visibility_off_outlined 
+                      : Icons.visibility_outlined,
+                  color: Colors.grey.shade400,
+                  size: 20,
                 ),
-              ),
-              child: const CustomTextField(
-                hint: "*********",
-                prefixIcon: Icons.lock_outline,
-                isPassword: true,
               ),
             ),
             SizedBox(height: 20.h),
@@ -80,17 +93,22 @@ class SecuritySettingsView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.h),
-            Theme(
-              data: Theme.of(context).copyWith(
-                inputDecorationTheme: InputDecorationTheme(
-                  fillColor: const Color(0xFF1B1720),
-                  hintStyle: TextStyle(color: Colors.white30, fontSize: 14.sp),
+            CustomTextField(
+              hint: "*********",
+              prefixIcon: Icons.lock_outline,
+              isPassword: securityProvider.isConfirmPasswordHidden,
+              fillColor: const Color(0xFF1B1720),
+              hintColor: Colors.white30,
+              iconColor: Colors.grey.shade400,
+              suffixIcon: IconButton(
+                onPressed: () => securityProvider.toggleConfirmPassword(),
+                icon: Icon(
+                  securityProvider.isConfirmPasswordHidden 
+                      ? Icons.visibility_off_outlined 
+                      : Icons.visibility_outlined,
+                  color: Colors.grey.shade400,
+                  size: 20,
                 ),
-              ),
-              child: const CustomTextField(
-                hint: "*********",
-                prefixIcon: Icons.lock_outline,
-                isPassword: true,
               ),
             ),
             SizedBox(height: 16.h),
