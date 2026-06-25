@@ -6,6 +6,7 @@ class UpcomingEventTile extends StatelessWidget {
   final String tag;
   final String title;
   final String time;
+  final String date;
   final String location;
   final String? rightActionText;
   final String? rightImageUrl;
@@ -15,6 +16,7 @@ class UpcomingEventTile extends StatelessWidget {
     required this.tag,
     required this.title,
     required this.time,
+    required this.date,
     required this.location,
     this.rightActionText,
     this.rightImageUrl,
@@ -90,6 +92,18 @@ class UpcomingEventTile extends StatelessWidget {
               SizedBox(width: 6.w),
               Text(
                 time,
+                style: FontManager.dmSansH3().copyWith(color: Colors.white30, fontSize: 12.sp),
+              ),
+            ],
+          ),
+                    SizedBox(height: 4.h),
+
+          Row(
+            children: [
+              Icon(Icons.date_range, color: Colors.white30, size: 14.sp),
+              SizedBox(width: 6.w),
+              Text(
+                date,
                 style: FontManager.dmSansH3().copyWith(color: Colors.white30, fontSize: 12.sp),
               ),
             ],

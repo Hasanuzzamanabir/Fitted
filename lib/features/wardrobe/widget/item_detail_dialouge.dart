@@ -23,11 +23,53 @@ class ItemDetailsDialog extends StatefulWidget {
 }
 
 class _ItemDetailsDialogState extends State<ItemDetailsDialog> {
-  String selectedCategory = "Tops";
-  final List<String> categories = ["Tops", "Bottoms", "Outwear", "Shoes", "Accessories"];
+  String selectedCategory = "Sports — Domestic";
+  String selectedOccasion = ""; 
+
+  final Map<String, List<String>> allOccasions = {
+    "Sports — Domestic": [
+      "Derby", "F1", "Super Bowl", "The Masters", "Ryder Cup", 
+      "US Open Golf", "Wimbledon", "US Open Tennis", "NBA Finals", "World Cup", 
+      "College Football Championship", "Daytona 500", "Preakness", 
+      "Belmont Stakes", "March Madness", "NFL Draft", "MLB World Series", 
+      "NHL Stanley Cup", "Boxing", "WWE", "UFC"
+    ],
+    "Sports — International": [
+      "Premier League", "Australian Open", "Six Nations Rugby", 
+      "Champions League Final", "Cricket World Cup"
+    ],
+    "Music & Entertainment": [
+      "Stadium Concerts", "Coachella", "Lollapalooza", "Glastonbury", 
+      "Tomorrowland", "Jazz Festivals", "Country Music Festivals", 
+      "Opera", "Broadway", "Comedy Shows", "Award Shows", "BET Awards", "Met Gala"
+    ],
+    "Cultural & International": [
+      "Oktoberfest", "Carnival Rio", "Mardi Gras", "New Year's Eve", 
+      "St. Patrick's Day", "Pride Parade", "Running of the Bulls", 
+      "Monaco Grand Prix", "Cannes Film Festival", "Fashion Week"
+    ],
+    "Professional & Career": [
+      "Job Interview", "Industry Summit", "Work Event", 
+      "Corporate Meeting", "Networking Event", "Business Conference"
+    ],
+    "Dating & Social": [
+      "Date Night", "First Date", "Cocktail Party", "Dinner Party", 
+      "Rooftop Brunch", "White Party", "Garden Party", "Watch Party", "Happy Hour"
+    ],
+    "Casual & Everyday": [
+      "Casual Day Out", "Coffee Run", "Shopping Day", 
+      "Weekend Hangout", "Errands", "Family Gathering"
+    ],
+    "Celebrations & Parties": [
+      "Birthday Party", "House Party", "Pool Party", 
+      "Yacht Party", "Holiday Party", "Graduation Party", "Retirement Party"
+    ]
+  };
 
   @override
   Widget build(BuildContext context) {
+    final currentItems = allOccasions[selectedCategory] ?? [];
+
     return Container(
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
@@ -62,12 +104,73 @@ class _ItemDetailsDialogState extends State<ItemDetailsDialog> {
             _buildLabel("Subline"),
             _buildTextField("Type here"),
             SizedBox(height: 16.h),
-            _buildLabel("Category"),
-            SizedBox(height: 8.h),
+            _buildLabel("Suitable for"),
+            DropdownButtonFormField<String>(
+              dropdownColor: const Color(0xFF1B1720),
+              value: selectedCategory,
+              icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.white54),
+              style: TextStyle(color: Colors.white, fontSize: 14.sp),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: const Color(0xFF1B1720),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16.r),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+              items: allOccasions.keys.map((String key) {
+                return DropdownMenuItem<String>(
+                  value: key,
+                  child: Text(key),
+                );
+              }).toList(),
+              onChanged: (value) {
+                if (value != null) {
+                  setState(() {
+                    selectedCategory = value;
+                    selectedOccasion = ""; 
+                  });
+                }
+              },
+            ),
+            SizedBox(height: 20.h),
             Wrap(
-              spacing: 8.w,
-              runSpacing: 8.h,
-              children: categories.map((cat) => _buildCategoryChip(cat)).toList(),
+              spacing: 10.w,
+              runSpacing: 12.h,
+              children: currentItems.map((item) {
+                final bool isSelected = selectedOccasion == item;
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (isSelected) {
+                        selectedOccasion = ""; 
+                      } else {
+                        selectedOccasion = item; 
+                      }
+                    });
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
+                    decoration: BoxDecoration(
+                      color: isSelected ? const Color(0xFFFF4B6B) : Colors.transparent,
+                      borderRadius: BorderRadius.circular(24.r),
+                      border: Border.all(
+                        color: isSelected ? const Color(0xFFFF4B6B) : Colors.white24,
+                        width: 1,
+                      ),
+                    ),
+                    child: Text(
+                      item,
+                      style: TextStyle(
+                        color: isSelected ? Colors.white : Colors.white70,
+                        fontSize: 13.sp,
+                        fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
             SizedBox(height: 32.h),
             _buildActionButtons(),
@@ -137,40 +240,18 @@ class _ItemDetailsDialogState extends State<ItemDetailsDialog> {
     );
   }
 
-  Widget _buildCategoryChip(String label) {
-    bool isSelected = selectedCategory == label;
-    return GestureDetector(
-      onTap: () => setState(() => selectedCategory = label),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.white10 : Colors.transparent,
-          borderRadius: BorderRadius.circular(20.r),
-          border: Border.all(color: isSelected ? Colors.white : Colors.white30),
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: isSelected ? Colors.white : Colors.white70,
-            fontSize: 13.sp,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildActionButtons() {
     return Row(
       children: [
         Expanded(
+          flex: 4,
           child: GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 14.h),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
-                border: Border.all(color: const Color(0xFFFF4B6B).withOpacity(0.5)),
+                border: Border.all(color: Colors.white),
               ),
               child: Center(
                 child: Text("Back", style: TextStyle(color: Colors.white, fontSize: 15.sp, fontWeight: FontWeight.w600)),
@@ -180,22 +261,25 @@ class _ItemDetailsDialogState extends State<ItemDetailsDialog> {
         ),
         SizedBox(width: 12.w),
         Expanded(
+          flex: 7,
           child: GestureDetector(
-  onTap: () {
-    Navigator.pop(context); 
-    SuccessAddedDialog.show(context); 
-  },
-  child: Container(
-    padding: EdgeInsets.symmetric(vertical: 14.h),
-    decoration: BoxDecoration(
-      color: const Color(0xFFFF4B6B),
-      borderRadius: BorderRadius.circular(12.r),
-    ),
-    child: Center(
-      child: Text("Save to Wardrobe", style: TextStyle(color: Colors.white, fontSize: 15.sp, fontWeight: FontWeight.w600)),
-    ),
-  ),
-),
+            onTap: selectedOccasion.isEmpty 
+                ? null 
+                : () {
+                    Navigator.pop(context); 
+                    SuccessAddedDialog.show(context); 
+                  },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 14.h),
+              decoration: BoxDecoration(
+                color: selectedOccasion.isEmpty ? const Color(0xFFFF4B6B).withOpacity(0.4) : const Color(0xFFFF4B6B),
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Center(
+                child: Text("Save to Wardrobe", style: TextStyle(color: Colors.white, fontSize: 15.sp, fontWeight: FontWeight.w600)),
+              ),
+            ),
+          ),
         ),
       ],
     );

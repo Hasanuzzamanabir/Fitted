@@ -72,7 +72,7 @@ CustomButtonWidget(
                                 color: AppColors.textprimary,),
                               children: [
                                 TextSpan(
-                                  text: 'Log In',
+                                  text: '  Log In',
                                   style: TextStyle(
                                     color: AppColors.primecolor,
                                     fontWeight: FontWeight.w600,

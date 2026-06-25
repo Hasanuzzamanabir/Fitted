@@ -341,11 +341,11 @@ class _PlanOutfitViewState extends State<PlanOutfitView> {
                       children: [
                         TextSpan(
                           text: "Where are you ",
-                          style: FontManager.playfairH1().copyWith(color: Colors.white, fontSize: 32.sp),
+                          style: FontManager.playfairH1().copyWith(color: Colors.white, fontSize: 28.sp),
                         ),
                         TextSpan(
                           text: "headed?",
-                          style: FontManager.playfairH1().copyWith(color: const Color(0xFFFF4B6B), fontSize: 32.sp),
+                          style: FontManager.playfairH1().copyWith(color: const Color(0xFFFF4B6B), fontSize: 28.sp),
                         ),
                       ],
                     ),

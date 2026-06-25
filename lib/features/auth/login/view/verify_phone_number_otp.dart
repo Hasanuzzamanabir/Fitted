@@ -298,7 +298,7 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     Text(
-                      "Enter the 4-digit code that you receive in your account", 
+                      "Login to continue your journey", 
                       style: TextStyle(
                         color: Colors.white70, 
                         fontSize: 13.sp,
@@ -353,7 +353,7 @@ class VerifyPhoneNumberOtp extends StatelessWidget {
                   SizedBox(height: 35.h),
 
                   Text(
-                    "Verify", 
+                    "Verify phone number", 
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,

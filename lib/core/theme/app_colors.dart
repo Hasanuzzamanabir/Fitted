@@ -21,4 +21,8 @@ class AppColors {
   static const Color success = Color(0xFF22C55E);
   static const Color error = Color(0xFFEF4444);
   static const Color border = Color(0xFFB5B5B5);
+  static const Color teal = Color(0xFF00C8B3);
+  static const Color newblue = Color(0xFFF0088FF);
+
+
 }

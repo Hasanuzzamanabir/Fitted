@@ -111,22 +111,8 @@ class SecuritySettingsView extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16.h),
-            Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {},
-                child: Text(
-                  "Forgot password?",
-                  style: TextStyle(
-                    color: AppColors.primecolor,
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 32.h),
+            SizedBox(height: 30.h),
+            
             CustomButtonWidget(
               title: "Update password",
               onTap: () {},

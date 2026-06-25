@@ -36,11 +36,11 @@ class ExploreView extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: "Your look for ",
-                    style: FontManager.playfairH1().copyWith(color: Colors.white, fontSize: 32.sp),
+                    style: FontManager.playfairH1().copyWith(color: Colors.white, fontSize: 28.sp),
                   ),
                   TextSpan(
                     text: "Saturday",
-                    style: FontManager.playfairH1().copyWith(color: const Color(0xFFFF4B6B), fontSize: 32.sp),
+                    style: FontManager.playfairH1().copyWith(color: const Color(0xFFFF4B6B), fontSize: 28.sp),
                   ),
                 ],
               ),
